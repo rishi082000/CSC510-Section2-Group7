@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { menuItems } from "../../data/menuItems.jsx";
 import "../../Styles/global.css";
+import Cart from "../../data/Cart.jsx"; 
 
 function Quiz() {
   const [tempAnswers, setTempAnswers] = useState({
@@ -32,7 +33,6 @@ function Quiz() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Custom Validation Check
     const unanswered = Object.values(tempAnswers).some(val => val === "");
     if (unanswered) {
       alert("Please answer all the questions before submitting!");
@@ -70,53 +70,67 @@ function Quiz() {
 
   const recommendedItems = getRecommendedItems();
 
-  const getItemQuantity = (itemId) => cartItems.find(ci => ci.id === itemId)?.quantity || 0;
+  const getItemQuantity = (itemId) =>
+    cartItems.find(ci => ci.id === itemId)?.quantity || 0;
 
   const handleUpdateCart = (item, action) => {
     setCartItems(prevCart => {
       const existingIndex = prevCart.findIndex(ci => ci.id === item.id);
-      if (action === 'ADD' || action === 'INCREMENT') {
-        if (existingIndex >= 0) 
-          return prevCart.map((ci, idx) => idx === existingIndex ? { ...ci, quantity: ci.quantity + 1 } : ci);
-        else 
-          return [...prevCart, { ...item, quantity: 1 }];
-      } else if (action === 'DECREMENT' && existingIndex >= 0) {
-        return prevCart.map((ci, idx) => idx === existingIndex ? { ...ci, quantity: ci.quantity - 1 } : ci)
-                       .filter(ci => ci.quantity > 0);
+      if (action === "ADD" || action === "INCREMENT") {
+        if (existingIndex >= 0)
+          return prevCart.map((ci, idx) =>
+            idx === existingIndex ? { ...ci, quantity: ci.quantity + 1 } : ci
+          );
+        else return [...prevCart, { ...item, quantity: 1 }];
+      } else if (action === "DECREMENT" && existingIndex >= 0) {
+        return prevCart
+          .map((ci, idx) =>
+            idx === existingIndex ? { ...ci, quantity: ci.quantity - 1 } : ci
+          )
+          .filter(ci => ci.quantity > 0);
       }
       return prevCart;
     });
   };
 
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <div className="quiz-container">
-      {/* Header remains outside the content wrapper */}
+      {/* Fixed header */}
       <div className="quiz-header">
         <h2>PACKEats</h2>
-        <div className="quiz-cart-summary">Items: {totalItems} | Total: ${totalPrice.toFixed(2)}</div>
+        <div className="quiz-cart-summary">
+          Items: {totalItems} | Total: ${totalPrice.toFixed(2)}
+        </div>
       </div>
 
-      {/* --- Main Content Wrapper for the two columns --- */}
+      {/* Two-column layout */}
       <div className="main-content-wrapper">
-          
-        {/* === 1st Element (Left Column): Quiz & Recommendations === */}
+        {/* === Left Column: Quiz + Recommendations === */}
         <div className="quiz-form-area">
           <p className="quiz-intro">
-            Confused on what dish to order? Answer a few fun questions and we'll recommend dishes you'll love.
+            Confused on what dish to order? Answer a few fun questions and we'll
+            recommend dishes you'll love.
           </p>
 
           <form onSubmit={handleSubmit} className="quiz-form">
-            {quizQuestions.map((q) => (
+            {quizQuestions.map(q => (
               <div key={q.id} className="quiz-question">
-                <p className="quiz-question-text"><strong>{q.question}</strong></p>
+                <p className="quiz-question-text">
+                  <strong>{q.question}</strong>
+                </p>
                 <div className="quiz-options">
-                  {q.options.map((opt) => (
+                  {q.options.map(opt => (
                     <label
                       key={opt}
-                      className={`quiz-option-label ${tempAnswers[q.id] === opt ? "selected-option" : ""}`}
+                      className={`quiz-option-label ${
+                        tempAnswers[q.id] === opt ? "selected-option" : ""
+                      }`}
                     >
                       <input
                         type="radio"
@@ -132,33 +146,58 @@ function Quiz() {
                 </div>
               </div>
             ))}
-            <button type="submit" className="quiz-submit-btn">Submit</button>
+            <button type="submit" className="quiz-submit-btn">
+              Submit
+            </button>
           </form>
 
           {submittedTags.length > 0 && (
             <div className="quiz-recommendations">
-              <h3 className="quiz-recommendations-title">Top Recommended Dishes:</h3>
+              <h3 className="quiz-recommendations-title">
+                Top Recommended Dishes:
+              </h3>
               {recommendedItems.map(item => {
                 const currentQuantity = getItemQuantity(item.id);
                 const cartItem = cartItems.find(ci => ci.id === item.id) || item;
-                
+
                 return (
                   <div key={item.id} className="quiz-menu-item">
-                    <p className="quiz-restaurant-name"><strong>Restaurant:</strong> {item.restaurant_name}</p>
-                    <p className="quiz-dish-name"><strong>Dish:</strong> {item.name}</p>
+                    <p className="quiz-restaurant-name">
+                      <strong>Restaurant:</strong> {item.restaurant_name}
+                    </p>
+                    <p className="quiz-dish-name">
+                      <strong>Dish:</strong> {item.name}
+                    </p>
                     <p className="quiz-dish-description">{item.description}</p>
-                    <p className="quiz-dish-price"><strong>Price:</strong> ${item.price.toFixed(2)}</p>
+                    <p className="quiz-dish-price">
+                      <strong>Price:</strong> ${item.price.toFixed(2)}
+                    </p>
 
                     <div className="quiz-cart-buttons">
                       {currentQuantity === 0 && <span>Add to Cart:</span>}
 
                       {currentQuantity === 0 ? (
-                        <button onClick={() => handleUpdateCart(item, 'ADD')} className="add-plus-btn">+</button>
+                        <button
+                          onClick={() => handleUpdateCart(item, "ADD")}
+                          className="add-plus-btn"
+                        >
+                          +
+                        </button>
                       ) : (
                         <>
-                          <button onClick={() => handleUpdateCart(cartItem, 'DECREMENT')}>-</button>
+                          <button
+                            onClick={() =>
+                              handleUpdateCart(cartItem, "DECREMENT")
+                            }
+                          >
+                            -
+                          </button>
                           <span>{currentQuantity}</span>
-                          <button onClick={() => handleUpdateCart(cartItem, 'ADD')}>+</button>
+                          <button
+                            onClick={() => handleUpdateCart(cartItem, "ADD")}
+                          >
+                            +
+                          </button>
                         </>
                       )}
                     </div>
@@ -169,26 +208,14 @@ function Quiz() {
           )}
         </div>
 
-        {/* === 2nd Element (Right Column): Cart (Sticky Panel) === */}
+        {/* === Right Column: Cart Panel === */}
         <div className="side-panel">
-          {cartItems.length > 0 && (
-            <div className="quiz-cart">
-              <h3>Cart</h3>
-              {cartItems.map(item => (
-                <div key={item.id} className="cart-item">
-                  <p>{item.name} - ${item.price.toFixed(2)}</p>
-                  <div className="cart-item-controls">
-                    <button onClick={() => handleUpdateCart(item, 'DECREMENT')}>-</button>
-                    <span>{item.quantity}</span>
-                    <button onClick={() => handleUpdateCart(item, 'ADD')}>+</button>
-                  </div>
-                </div>
-              ))}
-              <p>Total: ${totalPrice.toFixed(2)}</p>
-            </div>
-          )}
+          <Cart
+            cartItems={cartItems}
+            totalPrice={totalPrice}
+            handleUpdateCart={handleUpdateCart}
+          />
         </div>
-
       </div>
     </div>
   );
