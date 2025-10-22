@@ -1,168 +1,188 @@
-
+// src/data/menuItems.jsx
 export const menuItems = [
+  // Restaurant 1: Green Garden
   {
     id: 1,
     restaurant_id: 101,
-    name: "Paneer Butter Masala",
-    description: "Creamy Indian curry with spices and cottage cheese",
-    price: 11.5,
-    category: "Main Course",
+    restaurant_name: "Green Garden",
+    name: "Vegan Delight Bowl",
+    description: "A colorful mix of fresh veggies and grains.",
+    price: 9.99,
+    category: "Bowl",
     available: true,
     stock: 10,
-    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Big-Bite", "Savory", "Roasted", "LowCal"]
+    recommendation_tags: ["Vegan", "Chill", "Mild", "Snack Attack", "Sweet", "Baked", "LowCal"]
   },
   {
     id: 2,
     restaurant_id: 101,
-    name: "Veggie Delight Pizza",
-    description: "Loaded with bell peppers, olives, and tomatoes",
-    price: 9.0,
-    category: "Main Course",
+    restaurant_name: "Green Garden",
+    name: "Grilled Tofu Skewers",
+    description: "Grilled tofu with bold seasoning on skewers.",
+    price: 11.5,
+    category: "Skewers",
     available: true,
-    stock: 15,
-    recommendation_tags: ["Vegetarian", "Adventurous", "Kick", "Snack Attack", "Cheesy", "Baked", "LowCal"]
+    stock: 8,
+    recommendation_tags: ["Vegan", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"]
   },
   {
     id: 3,
     restaurant_id: 101,
-    name: "Vegan Buddha Bowl",
-    description: "Quinoa, chickpeas, and roasted vegetables with tahini sauce",
-    price: 10.5,
-    category: "Main Course",
+    restaurant_name: "Green Garden",
+    name: "Baked Falafel Plate",
+    description: "Baked falafel served with tahini and salad.",
+    price: 10.0,
+    category: "Plate",
     available: true,
     stock: 12,
-    recommendation_tags: ["Vegan", "Chill", "Mild", "Big-Bite", "Savory", "Roasted", "LowCal"]
+    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Savory", "Baked", "LowCal"]
   },
   {
     id: 4,
-    restaurant_id: 102,
-    name: "Grilled Chicken Tacos",
-    description: "Soft tortillas with grilled chicken, salsa, and cheese",
-    price: 12.0,
-    category: "Main Course",
+    restaurant_id: 101,
+    restaurant_name: "Green Garden",
+    name: "Roasted Veggie Wrap",
+    description: "Roasted seasonal veggies in a whole wheat wrap.",
+    price: 8.5,
+    category: "Wrap",
     available: true,
-    stock: 8,
-    recommendation_tags: ["Non-Vegetarian", "Adventurous", "Kick", "Big-Bite", "Spicy", "Grilled", "HighCal"]
+    stock: 15,
+    recommendation_tags: ["Vegetarian", "Cozy", "Kick", "Big-Bite", "Savory", "Roasted", "LowCal"]
   },
   {
     id: 5,
-    restaurant_id: 102,
-    name: "Spicy Beef Burrito",
-    description: "Wrapped burrito with beef, beans, rice, and spicy sauce",
-    price: 13.5,
-    category: "Main Course",
-    available: true,
-    stock: 10,
-    recommendation_tags: ["Non-Vegetarian", "Chill", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"]
-  },
-  {
-    id: 6,
-    restaurant_id: 102,
-    name: "Fish & Chips",
-    description: "Golden fried fish with crispy fries",
-    price: 11.0,
-    category: "Main Course",
-    available: true,
-    stock: 7,
-    recommendation_tags: ["Non-Vegetarian", "Cozy", "Mild", "Snack Attack", "Savory", "Fried", "HighCal"]
-  },
-  {
-    id: 7,
-    restaurant_id: 103,
-    name: "Margarita Pizza",
-    description: "Classic pizza with tomato sauce, mozzarella, and basil",
-    price: 8.5,
-    category: "Main Course",
-    available: true,
-    stock: 15,
-    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Cheesy", "Baked", "LowCal"]
-  },
-  {
-    id: 8,
-    restaurant_id: 103,
-    name: "Vegan Stir Fry",
-    description: "Colorful vegetables stir fried in soy sauce",
-    price: 10.0,
-    category: "Main Course",
-    available: true,
-    stock: 12,
-    recommendation_tags: ["Vegan", "Adventurous", "Kick", "Big-Bite", "Savory", "Roasted", "LowCal"]
-  },
-  {
-    id: 9,
-    restaurant_id: 103,
-    name: "Cheesy Garlic Bread",
-    description: "Toasted bread with garlic butter and melted cheese",
+    restaurant_id: 101,
+    restaurant_name: "Green Garden",
+    name: "Snack Attack Veggie Chips",
+    description: "Crispy baked vegetable chips, lightly salted.",
     price: 5.0,
     category: "Snack",
     available: true,
     stock: 20,
-    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Cheesy", "Baked", "LowCal"]
+    recommendation_tags: ["Vegan", "Chill", "Mild", "Snack Attack", "Savory", "Baked", "LowCal"]
   },
+
+  // Restaurant 2: Spice Hub
   {
-    id: 10,
-    restaurant_id: 104,
-    name: "Grilled Salmon",
-    description: "Fresh salmon grilled to perfection with herbs",
-    price: 14.0,
-    category: "Main Course",
-    available: true,
-    stock: 8,
-    recommendation_tags: ["Non-Vegetarian", "Cozy", "Mild", "Big-Bite", "Savory", "Grilled", "HighCal"]
-  },
-  {
-    id: 11,
-    restaurant_id: 104,
-    name: "Fried Chicken Wings",
-    description: "Crispy fried wings with spicy sauce",
-    price: 11.5,
-    category: "Snack",
-    available: true,
-    stock: 10,
-    recommendation_tags: ["Non-Vegetarian", "Adventurous", "Fiery", "Snack Attack", "Spicy", "Fried", "HighCal"]
-  },
-  {
-    id: 12,
-    restaurant_id: 104,
-    name: "Vegan Smoothie Bowl",
-    description: "Fruits, nuts, and seeds blended for a refreshing bowl",
+    id: 6,
+    restaurant_id: 102,
+    restaurant_name: "Spice Hub",
+    name: "Fiery Chicken Wrap",
+    description: "Grilled chicken with spicy sauce and fresh veggies.",
     price: 9.5,
-    category: "Drink",
+    category: "Wrap",
     available: true,
     stock: 15,
-    recommendation_tags: ["Vegan", "Chill", "Mild", "Drink", "Sweet", "Baked", "LowCal"]
+    recommendation_tags: ["Non-Vegetarian", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"]
   },
   {
-    id: 13,
-    restaurant_id: 105,
-    name: "Big-Bite Burger",
-    description: "Juicy beef patty with cheese, lettuce, and tomato",
-    price: 12.5,
-    category: "Main Course",
+    id: 7,
+    restaurant_id: 102,
+    restaurant_name: "Spice Hub",
+    name: "Chili Paneer Skewers",
+    description: "Spicy paneer cubes grilled on skewers.",
+    price: 12.0,
+    category: "Skewers",
     available: true,
     stock: 10,
-    recommendation_tags: ["Non-Vegetarian", "Adventurous", "Kick", "Big-Bite", "Cheesy", "Grilled", "HighCal"]
+    recommendation_tags: ["Vegetarian", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"]
   },
   {
-    id: 14,
-    restaurant_id: 105,
-    name: "Roasted Veggie Sandwich",
-    description: "Assorted roasted vegetables with hummus on whole-grain bread",
-    price: 8.0,
-    category: "Snack",
+    id: 8,
+    restaurant_id: 102,
+    restaurant_name: "Spice Hub",
+    name: "Mild Curry Bowl",
+    description: "Comforting curry with mild spices and rice.",
+    price: 9.0,
+    category: "Bowl",
     available: true,
     stock: 12,
-    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Savory", "Roasted", "LowCal"]
+    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Big-Bite", "Savory", "Roasted", "LowCal"]
   },
   {
-    id: 15,
-    restaurant_id: 105,
-    name: "Fried Mozzarella Sticks",
-    description: "Cheesy mozzarella sticks, crispy on the outside",
+    id: 9,
+    restaurant_id: 102,
+    restaurant_name: "Spice Hub",
+    name: "Snack Attack Chicken Nuggets",
+    description: "Crispy chicken nuggets with mild spices.",
     price: 6.5,
     category: "Snack",
     available: true,
+    stock: 20,
+    recommendation_tags: ["Non-Vegetarian", "Chill", "Mild", "Snack Attack", "Savory", "Fried", "HighCal"]
+  },
+  {
+    id: 10,
+    restaurant_id: 102,
+    restaurant_name: "Spice Hub",
+    name: "Roasted Veggie Curry",
+    description: "Roasted vegetables cooked in rich spices.",
+    price: 10.5,
+    category: "Bowl",
+    available: true,
+    stock: 10,
+    recommendation_tags: ["Vegan", "Adventurous", "Kick", "Big-Bite", "Savory", "Roasted", "LowCal"]
+  },
+
+  // Restaurant 3: Cozy Corner
+  {
+    id: 11,
+    restaurant_id: 103,
+    restaurant_name: "Cozy Corner",
+    name: "Cheesy Veggie Pizza",
+    description: "Loaded with cheese and fresh veggies.",
+    price: 11.0,
+    category: "Pizza",
+    available: true,
+    stock: 8,
+    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Big-Bite", "Cheesy", "Baked", "LowCal"]
+  },
+  {
+    id: 12,
+    restaurant_id: 103,
+    restaurant_name: "Cozy Corner",
+    name: "Spicy Grilled Sandwich",
+    description: "Grilled sandwich with a spicy twist.",
+    price: 8.0,
+    category: "Sandwich",
+    available: true,
+    stock: 12,
+    recommendation_tags: ["Vegetarian", "Adventurous", "Fiery", "Snack Attack", "Spicy", "Grilled", "HighCal"]
+  },
+  {
+    id: 13,
+    restaurant_id: 103,
+    restaurant_name: "Cozy Corner",
+    name: "Grilled Chicken Salad",
+    description: "Salad with grilled chicken and fresh greens.",
+    price: 10.5,
+    category: "Salad",
+    available: true,
+    stock: 10,
+    recommendation_tags: ["Non-Vegetarian", "Chill", "Kick", "Big-Bite", "Savory", "Grilled", "HighCal"]
+  },
+  {
+    id: 14,
+    restaurant_id: 103,
+    restaurant_name: "Cozy Corner",
+    name: "Baked Sweet Potato Fries",
+    description: "Crispy baked fries with a hint of sweetness.",
+    price: 6.0,
+    category: "Snack",
+    available: true,
     stock: 15,
-    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Snack Attack", "Cheesy", "Fried", "HighCal"]
+    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Sweet", "Baked", "LowCal"]
+  },
+  {
+    id: 15,
+    restaurant_id: 103,
+    restaurant_name: "Cozy Corner",
+    name: "Roasted Chicken Sandwich",
+    description: "Freshly roasted chicken with pesto on bread.",
+    price: 9.5,
+    category: "Sandwich",
+    available: true,
+    stock: 12,
+    recommendation_tags: ["Non-Vegetarian", "Cozy", "Kick", "Snack Attack", "Savory", "Roasted", "LowCal"]
   }
 ];
