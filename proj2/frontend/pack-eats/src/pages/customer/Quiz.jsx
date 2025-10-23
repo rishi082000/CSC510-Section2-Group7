@@ -1,10 +1,10 @@
 // src/pages/customer/Quiz.jsx
-import React, { useState } from "react";
-import { menuItems } from "../../data/menuItems.jsx";
+import React, { useState, useEffect } from "react";
+import { menuItems } from "../../testdata/menuItems.jsx";
 import "../../Styles/global.css";
-import Cart from "../../data/Cart.jsx"; 
+import Cart from "./Cart";
 
-function Quiz() {
+function Quiz({ onReturnToBrowse }) {
   const [tempAnswers, setTempAnswers] = useState({
     q1: "",
     q2: "",
@@ -15,7 +15,24 @@ function Quiz() {
   });
 
   const [submittedTags, setSubmittedTags] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+
+  // ✅ Persistent Cart (same as Browse.jsx)
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem("packeats_cart");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("packeats_cart", JSON.stringify(cartItems));
+    } catch (err) {
+      console.error("Failed to save cart:", err);
+    }
+  }, [cartItems]);
 
   const quizQuestions = [
     { id: "q1", question: "What type of food do you prefer?", options: ["Vegetarian", "Vegan", "Non-Vegetarian"] },
@@ -32,7 +49,6 @@ function Quiz() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const unanswered = Object.values(tempAnswers).some(val => val === "");
     if (unanswered) {
       alert("Please answer all the questions before submitting!");
@@ -102,8 +118,13 @@ function Quiz() {
   return (
     <div className="quiz-container">
       {/* Fixed header */}
-      <div className="quiz-header">
-        <h2>PACKEats</h2>
+      <div className="quiz-header" style={{ justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+          <button onClick={onReturnToBrowse} className="back-btn">
+            ← Return to Browse
+          </button>
+          <h2>PACKEats</h2>
+        </div>
         <div className="quiz-cart-summary">
           Items: {totalItems} | Total: ${totalPrice.toFixed(2)}
         </div>
