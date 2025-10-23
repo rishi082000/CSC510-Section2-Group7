@@ -233,71 +233,354 @@ a:hover {
 }
 
 /* Quiz Page Styles */
-
 :root {
-  --deep-red: #b22222; --dark-red: #8b1a1a; --light-red: #fcebeb;
-  --text-dark: #333; --bg-white: #fff;
+  --deep-red: #b22222;
+  --dark-red: #8b1a1a;
+  --light-red: #fcebeb;
+  --text-dark: #333;
+  --bg-white: #fff;
 }
 
 body {
-  margin: 0; font-family: Arial,sans-serif;
-  background: var(--light-red); color: var(--text-dark);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--light-red);
+  color: var(--text-dark);
   overflow-x: hidden;
 }
 
-.quiz-container { max-width:1200px; width:95%; margin:0 auto; padding:20px; min-height:100vh; }
+/* Containers */
+.quiz-container,
+.browse-container {
+  max-width: 1200px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
 .quiz-header {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:12px 20px; background:var(--deep-red); color:#fff;
-  font-weight:700; border-radius:0 0 8px 8px; margin-bottom:20px;
-  box-shadow:0 3px 10px rgba(0,0,0,.2); position:sticky; top:0; z-index:1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--deep-red);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-.quiz-intro { margin-bottom:20px; }
 
-.main-content-wrapper { display:flex; gap:30px; align-items:flex-start; }
-.quiz-form-area { flex:1; min-width:0; }
-.side-panel { flex:0 0 300px; position:sticky; top:90px; }
+.quiz-intro {
+  margin-bottom: 20px;
+}
 
+.main-content-wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.quiz-form-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.side-panel {
+  flex: 0 0 300px;
+  position: sticky;
+  top: 90px;
+}
+
+/* Buttons */
 button {
-  padding:6px 14px; font-weight:600; border:none; border-radius:5px;
-  cursor:pointer; background:var(--deep-red); color:#fff; transition:.2s;
+  padding: 6px 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: var(--deep-red);
+  color: #fff;
+  transition: 0.2s;
 }
-button:hover { background:var(--dark-red); transform:translateY(-1px); }
-.quiz-submit-btn { width:100%; margin-top:15px; padding:10px 0; border-radius:8px; }
 
-.quiz-question, .quiz-menu-item, .quiz-cart { 
-  background:#fff; padding:12px 15px; border-radius:8px; margin-bottom:15px; 
-  box-shadow:0 1px 5px rgba(0,0,0,.05); 
+button:hover {
+  background: var(--dark-red);
+  transform: translateY(-1px);
 }
-.quiz-question { border-left:4px solid var(--deep-red); }
-.quiz-menu-item:hover { box-shadow:0 5px 15px rgba(0,0,0,.15); transform:translateY(-2px); }
 
-.quiz-options { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-.quiz-option-input { display:none; }
+.quiz-submit-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+/* Quiz / Menu Items */
+.quiz-question,
+.quiz-menu-item,
+.quiz-cart {
+  background: #fff;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-question {
+  border-left: 4px solid var(--deep-red);
+}
+
+.quiz-menu-item:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Quiz Options */
+.quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.quiz-option-input {
+  display: none;
+}
+
 .quiz-option-label {
-  display:inline-block; padding:8px 16px; border:2px solid var(--deep-red);
-  border-radius:25px; cursor:pointer; font-weight:500; background:#fff; color:var(--text-dark);
-  white-space:nowrap; transition:.2s;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid var(--deep-red);
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  background: #fff;
+  color: var(--text-dark);
+  white-space: nowrap;
+  transition: 0.2s;
 }
-.quiz-option-label.selected-option { background:var(--deep-red); color:#fff; border-color:var(--dark-red); transform:scale(1.05);}
-.quiz-option-label:hover { background:#f7dcdc; }
 
-.quiz-recommendations-title, .quiz-cart h3 {
-  color:var(--deep-red); font-size:1.4em; font-weight:700;
-  margin:20px 0 15px; padding-left:8px; border-left:5px solid var(--deep-red);
+.quiz-option-label.selected-option {
+  background: var(--deep-red);
+  color: #fff;
+  border-color: var(--dark-red);
+  transform: scale(1.05);
 }
-.quiz-restaurant-name { color:var(--dark-red); font-weight:600; font-size:.85em; }
-.quiz-dish-name { font-weight:700; font-size:1.2em; }
-.quiz-dish-description { font-size:.85em; color:#666; }
-.quiz-dish-price { font-weight:700; color:var(--deep-red); }
 
-.quiz-cart-buttons, .cart-item-controls { display:flex; align-items:center; gap:0; margin-top:6px; }
-.quiz-cart-buttons span:first-child:not(:only-child) { margin-right:8px; font-weight:600; color:#555; font-size:.9em; }
-.quiz-cart-buttons span:not(:first-child), .cart-item-controls span {
-  min-width:28px; text-align:center; padding:4px 0; font-weight:600; background:#f7dcdc;
-  border-top:2px solid var(--deep-red); border-bottom:2px solid var(--deep-red);
+.quiz-option-label:hover {
+  background: #f7dcdc;
 }
-.quiz-cart-buttons button:first-of-type, .cart-item-controls button:first-of-type { border-radius:5px 0 0 5px; }
-.quiz-cart-buttons button:last-of-type, .cart-item-controls button:last-of-type { border-radius:0 5px 5px 0; }
-.add-plus-btn { padding:4px 12px; border-radius:5px; }
-.cart-item { display:flex; justify-content:space-between; align-items:center; padding:8px; border:1px dashed #d3d3d3; border-radius:5px; margin-bottom:8px; }
+
+/* Headings */
+.quiz-recommendations-title,
+.quiz-cart h3 {
+  color: var(--deep-red);
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 20px 0 15px;
+  padding-left: 8px;
+  border-left: 5px solid var(--deep-red);
+}
+
+.quiz-restaurant-name {
+  color: var(--dark-red);
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+.quiz-dish-name {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.quiz-dish-description {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.quiz-dish-price {
+  font-weight: 700;
+  color: var(--deep-red);
+}
+
+/* Cart Buttons */
+.quiz-cart-buttons,
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.quiz-cart-buttons span:first-child:not(:only-child) {
+  margin-right: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.quiz-cart-buttons span:not(:first-child),
+.cart-item-controls span {
+  min-width: 28px;
+  text-align: center;
+  padding: 4px 0;
+  font-weight: 600;
+  background: #f7dcdc;
+  border-top: 2px solid var(--deep-red);
+  border-bottom: 2px solid var(--deep-red);
+}
+
+.quiz-cart-buttons button:first-of-type,
+.cart-item-controls button:first-of-type {
+  border-radius: 5px 0 0 5px;
+}
+
+.quiz-cart-buttons button:last-of-type,
+.cart-item-controls button:last-of-type {
+  border-radius: 0 5px 5px 0;
+}
+
+.add-plus-btn {
+  padding: 4px 12px;
+  border-radius: 5px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px dashed #d3d3d3;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+/* Browse / Menu List */
+.restaurant-list,
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.restaurant-list-item,
+.menu-list-item {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.restaurant-list-item:hover,
+.menu-list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-list-image,
+.menu-list-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 15px;
+}
+
+.restaurant-list-info,
+.menu-list-info {
+  flex: 1;
+}
+
+.restaurant-list-name,
+.menu-list-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 0 5px 0;
+}
+
+.restaurant-list-address,
+.menu-list-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 5px 0;
+}
+
+.menu-list-info .quiz-dish-price {
+  margin-top: 5px;
+}
+
+/* Back / Navigation Buttons */
+.back-btn,
+.take-quiz-btn {
+  padding: 6px 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: var(--deep-red);
+  color: #fff;
+  transition: 0.2s;
+}
+
+.back-btn:hover,
+.take-quiz-btn:hover {
+  background: var(--dark-red);
+  transform: translateY(-1px);
+}
+
+.back-btn {
+  font-size: 0.9rem;
+}
+
+.take-quiz-btn {
+  font-size: 1rem;
+  margin-left: 10px;
+}
+
+/* Header Search Box */
+.header-center-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.restaurant-header-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.restaurant-title-in-header {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.menu-search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
