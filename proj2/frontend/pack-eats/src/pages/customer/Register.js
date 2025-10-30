@@ -30,8 +30,7 @@ function Register() {
         setMessage("");
 
         try {
-            // 🔗 Replace this URL with your backend API (Spring Boot endpoint)
-            const response = await axios.post("http://localhost:8080/api/users/register", formData);
+            const response = await axios.post("http://localhost:8080/api/customers/register", formData);
             setMessage("Registration successful!");
             setFormData({
                 name: "",
