@@ -33,9 +33,15 @@ const CartCheckout = () => {
   };
 
   return (
-    <div style={{ width: "95%", maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
-      
-      {/* Header with Return Button and PackEats */}
+    <div
+      style={{
+        width: "95%",
+        maxWidth: "1200px",
+        margin: "0 auto",
+        padding: "20px",
+      }}
+    >
+      {/* Header */}
       <div
         className="quiz-header"
         style={{
@@ -51,7 +57,7 @@ const CartCheckout = () => {
         <h2 style={{ margin: "0 auto" }}>PackEats</h2>
       </div>
 
-      {orderPlaced && (
+      {orderPlaced ? (
         <div style={{ marginTop: "20px" }}>
           <h2>✅ Payment Successful</h2>
           <p>Your food will be delivered soon.</p>
@@ -66,9 +72,7 @@ const CartCheckout = () => {
             ← Go Back to Browse
           </button>
         </div>
-      )}
-
-      {!orderPlaced && (
+      ) : (
         <>
           {/* Cart Items */}
           <div style={{ marginTop: "20px" }}>
@@ -88,7 +92,7 @@ const CartCheckout = () => {
                   }}
                 >
                   <img
-                    src={item.image}
+                    src={`/assets/${item.name}.jpg`}
                     alt={item.name}
                     style={{
                       width: "120px",
@@ -99,7 +103,22 @@ const CartCheckout = () => {
                   />
                   <div className="menu-list-info">
                     <p className="menu-list-name">{item.name}</p>
-                    <p className="quiz-restaurant-name">{item.restaurant_name}</p>
+                    <p className="quiz-restaurant-name">
+                      {item.restaurant_name}
+                    </p>
+
+                    {/* Food Type */}
+                    {item.food_type && (
+                      <span
+                        className={`menu-list-food-type ${item.food_type.replace(
+                          " ",
+                          "-"
+                        )}`}
+                      >
+                        {item.food_type}
+                      </span>
+                    )}
+
                     <p>
                       Quantity: {item.quantity} × ${item.price.toFixed(2)}
                     </p>
@@ -111,7 +130,10 @@ const CartCheckout = () => {
           </div>
 
           {/* Delivery Method */}
-          <div className="checkout-section delivery-options" style={{ marginTop: "20px" }}>
+          <div
+            className="checkout-section delivery-options"
+            style={{ marginTop: "20px" }}
+          >
             <h3>Delivery Method</h3>
             <label className="delivery-option eco">
               <input
@@ -134,7 +156,10 @@ const CartCheckout = () => {
           </div>
 
           {/* Payment Method */}
-          <div className="checkout-section payment-options" style={{ marginTop: "20px" }}>
+          <div
+            className="checkout-section payment-options"
+            style={{ marginTop: "20px" }}
+          >
             <h3>Payment Method</h3>
             <label className="payment-option card">
               <input
@@ -166,7 +191,10 @@ const CartCheckout = () => {
           </div>
 
           {/* Order Summary */}
-          <div className="checkout-section summary" style={{ marginTop: "20px" }}>
+          <div
+            className="checkout-section summary"
+            style={{ marginTop: "20px" }}
+          >
             <h3>Order Summary</h3>
             <p>Subtotal: ${subtotal.toFixed(2)}</p>
             <p>Tax (7.25%): ${tax.toFixed(2)}</p>
