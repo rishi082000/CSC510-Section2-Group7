@@ -1,7 +1,7 @@
 // src/data/Restaurants.jsx
-import cozyCorner from "../assets/Cozy Corner.jpg";
-import greengarden from "../assets/Green Garden.jpg";
-import spicehub from "../assets/Spice Hub.jpg"; 
+import cozyCorner from "../assets/CozyCorner.jpg";
+import greengarden from "../assets/GreenGarden.jpg";
+import spicehub from "../assets/SpiceHub.jpg"; 
 const restaurants = [
   {
     id: 101,

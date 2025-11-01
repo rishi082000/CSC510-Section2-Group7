@@ -1,4 +1,4 @@
-import "../../Styles/global.css";
+import { Link } from "react-router-dom";
 
 function Cart({ cartItems, totalPrice, handleUpdateCart }) {
   if (cartItems.length === 0) {
@@ -13,9 +13,11 @@ function Cart({ cartItems, totalPrice, handleUpdateCart }) {
   return (
     <div className="quiz-cart">
       <h3>Cart</h3>
-      {cartItems.map(item => (
+      {cartItems.map((item) => (
         <div key={item.id} className="cart-item">
-          <p>{item.name} - ${item.price.toFixed(2)}</p>
+          <p>
+            {item.name} - ${item.price.toFixed(2)}
+          </p>
           <div className="cart-item-controls">
             <button onClick={() => handleUpdateCart(item, "DECREMENT")}>-</button>
             <span>{item.quantity}</span>
@@ -23,7 +25,14 @@ function Cart({ cartItems, totalPrice, handleUpdateCart }) {
           </div>
         </div>
       ))}
-      <p><strong>Total: ${totalPrice.toFixed(2)}</strong></p>
+      <p>
+        <strong>Total: ${totalPrice.toFixed(2)}</strong>
+      </p>
+
+      {/* ✅ Checkout Link */}
+      <Link to="/checkout" className="take-quiz-btn" style={{ textAlign: "center", display: "block" }}>
+        Go to Checkout →
+      </Link>
     </div>
   );
 }

@@ -11,9 +11,3 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-
-#server:
-#  ssl:
-#    trust-store: proj2/backend/pack-eats/src/main/resources/truststore.jks
-#    trust-store-password: Packeats1
-#    trust-store-type: JKS

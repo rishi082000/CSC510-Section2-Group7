@@ -52,7 +52,7 @@ function Register() {
             <div className="auth-box">
                 <h2 className="auth-header">Create Your Account</h2>
 
-                <form className="auth-form" onSubmit={handleSubmit} className="space-y-4">
+                <form className="auth-form" onSubmit={handleSubmit}>
                     <input
                         type="text"
                         name="name"

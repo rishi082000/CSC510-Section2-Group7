@@ -1,4 +1,22 @@
 // src/data/menuItems.jsx
+import VeganDelightBowl from "../assets/VeganDelightBowl.jpg";
+import GrilledTofuSkewers from "../assets/GrilledTofuSkewers.jpg";
+import BakedFalafelPlate from "../assets/BakedFalafelPlate.jpg";
+import RoastedVeggieWrap from "../assets/RoastedVeggieWrap.jpg";
+import SnackAttackVeggieChips from "../assets/SnackAttackVeggieChips.jpg";
+
+import FieryChickenWrap from "../assets/FieryChickenWrap.jpg";
+import ChiliPaneerSkewers from "../assets/ChiliPaneerSkewers.jpg";
+import MildCurryBowl from "../assets/MildCurryBowl.jpg";
+import SnackAttackChickenNuggets from "../assets/SnackAttackChickenNuggets.jpg";
+import RoastedVeggieCurry from "../assets/RoastedVeggieCurry.jpg";
+
+import CheesyVeggiePizza from "../assets/CheesyVeggiePizza.jpg";
+import SpicyGrilledSandwich from "../assets/SpicyGrilledSandwich.jpg";
+import GrilledChickenSalad from "../assets/GrilledChickenSalad.jpg";
+import BakedSweetPotatoFries from "../assets/BakedSweetPotatoFries.jpg";
+import RoastedChickenSandwich from "../assets/RoastedChickenSandwich.jpg";
+
 export const menuItems = [
   // Restaurant 1: Green Garden
   {
@@ -11,7 +29,8 @@ export const menuItems = [
     category: "Bowl",
     available: true,
     stock: 10,
-    recommendation_tags: ["Vegan", "Chill", "Mild", "Snack Attack", "Sweet", "Baked", "LowCal"]
+    image: VeganDelightBowl,
+    recommendation_tags: ["Vegan", "Chill", "Mild", "Snack Attack", "Sweet", "Baked", "LowCal"],
   },
   {
     id: 2,
@@ -23,7 +42,8 @@ export const menuItems = [
     category: "Skewers",
     available: true,
     stock: 8,
-    recommendation_tags: ["Vegan", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"]
+    image: GrilledTofuSkewers,
+    recommendation_tags: ["Vegan", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"],
   },
   {
     id: 3,
@@ -35,7 +55,8 @@ export const menuItems = [
     category: "Plate",
     available: true,
     stock: 12,
-    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Savory", "Baked", "LowCal"]
+    image: BakedFalafelPlate,
+    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Savory", "Baked", "LowCal"],
   },
   {
     id: 4,
@@ -47,7 +68,8 @@ export const menuItems = [
     category: "Wrap",
     available: true,
     stock: 15,
-    recommendation_tags: ["Vegetarian", "Cozy", "Kick", "Big-Bite", "Savory", "Roasted", "LowCal"]
+    image: RoastedVeggieWrap,
+    recommendation_tags: ["Vegetarian", "Cozy", "Kick", "Big-Bite", "Savory", "Roasted", "LowCal"],
   },
   {
     id: 5,
@@ -59,7 +81,8 @@ export const menuItems = [
     category: "Snack",
     available: true,
     stock: 20,
-    recommendation_tags: ["Vegan", "Chill", "Mild", "Snack Attack", "Savory", "Baked", "LowCal"]
+    image: SnackAttackVeggieChips,
+    recommendation_tags: ["Vegan", "Chill", "Mild", "Snack Attack", "Savory", "Baked", "LowCal"],
   },
 
   // Restaurant 2: Spice Hub
@@ -73,7 +96,8 @@ export const menuItems = [
     category: "Wrap",
     available: true,
     stock: 15,
-    recommendation_tags: ["Non-Vegetarian", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"]
+    image: FieryChickenWrap,
+    recommendation_tags: ["Non-Vegetarian", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"],
   },
   {
     id: 7,
@@ -85,7 +109,8 @@ export const menuItems = [
     category: "Skewers",
     available: true,
     stock: 10,
-    recommendation_tags: ["Vegetarian", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"]
+    image: ChiliPaneerSkewers,
+    recommendation_tags: ["Vegetarian", "Adventurous", "Fiery", "Big-Bite", "Spicy", "Grilled", "HighCal"],
   },
   {
     id: 8,
@@ -97,7 +122,8 @@ export const menuItems = [
     category: "Bowl",
     available: true,
     stock: 12,
-    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Big-Bite", "Savory", "Roasted", "LowCal"]
+    image: MildCurryBowl,
+    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Big-Bite", "Savory", "Roasted", "LowCal"],
   },
   {
     id: 9,
@@ -109,7 +135,8 @@ export const menuItems = [
     category: "Snack",
     available: true,
     stock: 20,
-    recommendation_tags: ["Non-Vegetarian", "Chill", "Mild", "Snack Attack", "Savory", "Fried", "HighCal"]
+    image: SnackAttackChickenNuggets,
+    recommendation_tags: ["Non-Vegetarian", "Chill", "Mild", "Snack Attack", "Savory", "Fried", "HighCal"],
   },
   {
     id: 10,
@@ -121,7 +148,8 @@ export const menuItems = [
     category: "Bowl",
     available: true,
     stock: 10,
-    recommendation_tags: ["Vegan", "Adventurous", "Kick", "Big-Bite", "Savory", "Roasted", "LowCal"]
+    image: RoastedVeggieCurry,
+    recommendation_tags: ["Vegan", "Adventurous", "Kick", "Big-Bite", "Savory", "Roasted", "LowCal"],
   },
 
   // Restaurant 3: Cozy Corner
@@ -135,7 +163,8 @@ export const menuItems = [
     category: "Pizza",
     available: true,
     stock: 8,
-    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Big-Bite", "Cheesy", "Baked", "LowCal"]
+    image: CheesyVeggiePizza,
+    recommendation_tags: ["Vegetarian", "Cozy", "Mild", "Big-Bite", "Cheesy", "Baked", "LowCal"],
   },
   {
     id: 12,
@@ -147,7 +176,8 @@ export const menuItems = [
     category: "Sandwich",
     available: true,
     stock: 12,
-    recommendation_tags: ["Vegetarian", "Adventurous", "Fiery", "Snack Attack", "Spicy", "Grilled", "HighCal"]
+    image: SpicyGrilledSandwich,
+    recommendation_tags: ["Vegetarian", "Adventurous", "Fiery", "Snack Attack", "Spicy", "Grilled", "HighCal"],
   },
   {
     id: 13,
@@ -159,7 +189,8 @@ export const menuItems = [
     category: "Salad",
     available: true,
     stock: 10,
-    recommendation_tags: ["Non-Vegetarian", "Chill", "Kick", "Big-Bite", "Savory", "Grilled", "HighCal"]
+    image: GrilledChickenSalad,
+    recommendation_tags: ["Non-Vegetarian", "Chill", "Kick", "Big-Bite", "Savory", "Grilled", "HighCal"],
   },
   {
     id: 14,
@@ -171,7 +202,8 @@ export const menuItems = [
     category: "Snack",
     available: true,
     stock: 15,
-    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Sweet", "Baked", "LowCal"]
+    image: BakedSweetPotatoFries,
+    recommendation_tags: ["Vegetarian", "Chill", "Mild", "Snack Attack", "Sweet", "Baked", "LowCal"],
   },
   {
     id: 15,
@@ -183,6 +215,8 @@ export const menuItems = [
     category: "Sandwich",
     available: true,
     stock: 12,
-    recommendation_tags: ["Non-Vegetarian", "Cozy", "Kick", "Snack Attack", "Savory", "Roasted", "LowCal"]
-  }
+    image: RoastedChickenSandwich,
+    recommendation_tags: ["Non-Vegetarian", "Cozy", "Kick", "Snack Attack", "Savory", "Roasted", "LowCal"],
+  },
 ];
+export default menuItems;

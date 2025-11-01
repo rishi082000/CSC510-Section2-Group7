@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import restaurants from "../../testdata/Restaurants";
-import { menuItems } from "../../testdata/menuItems";
+import axios from "axios";
 import Cart from "./Cart";
-import "../../Styles/global.css";
+import "../../styles/global.css";
 
 const Browse = ({ onTakeQuiz }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [menuSearchTerm, setMenuSearchTerm] = useState("");
-
-  // ✅ Persistent Cart
+  const [restaurants, setRestaurants] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
   const [cartItems, setCartItems] = useState(() => {
     try {
       const saved = localStorage.getItem("packeats_cart");
@@ -19,6 +18,36 @@ const Browse = ({ onTakeQuiz }) => {
     }
   });
 
+  // Fetch all restaurants once on mount
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/restaurants");
+        setRestaurants(response.data);
+      } catch (err) {
+        console.error("Error fetching restaurants:", err);
+      }
+    };
+    fetchRestaurants();
+  }, []);
+
+  // Fetch menu items when restaurant selected
+  useEffect(() => {
+    const fetchMenu = async () => {
+      if (!selectedRestaurant) return;
+      try {
+        const response = await axios.get("http://localhost:8080/api/restaurants/menu", {
+          params: { restaurantName: selectedRestaurant.name },
+        });
+        setMenuItems(response.data);
+      } catch (err) {
+        console.error("Error fetching menu:", err);
+      }
+    };
+    fetchMenu();
+  }, [selectedRestaurant]);
+
+  // Save cart in localStorage
   useEffect(() => {
     try {
       localStorage.setItem("packeats_cart", JSON.stringify(cartItems));
@@ -31,11 +60,7 @@ const Browse = ({ onTakeQuiz }) => {
     r.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const baseRestaurantMenu = selectedRestaurant
-    ? menuItems.filter((item) => item.restaurant_name === selectedRestaurant.name)
-    : [];
-
-  const restaurantMenu = baseRestaurantMenu.filter((item) =>
+  const filteredMenu = menuItems.filter((item) =>
     item.name.toLowerCase().includes(menuSearchTerm.toLowerCase())
   );
 
@@ -62,12 +87,8 @@ const Browse = ({ onTakeQuiz }) => {
     });
   };
 
-  const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
   const getItemQuantity = (itemId) =>
     cartItems.find((ci) => ci.id === itemId)?.quantity || 0;
 
@@ -80,7 +101,9 @@ const Browse = ({ onTakeQuiz }) => {
         <div className="header-center-content">
           {selectedRestaurant ? (
             <div className="restaurant-header-search">
-              <h3 className="restaurant-title-in-header">{selectedRestaurant.name}</h3>
+              <h3 className="restaurant-title-in-header">
+                {selectedRestaurant.name}
+              </h3>
               <input
                 type="text"
                 placeholder={`Search ${selectedRestaurant.name} menu...`}
@@ -125,7 +148,7 @@ const Browse = ({ onTakeQuiz }) => {
                   }}
                 >
                   <img
-                    src={r.image}
+                    src={`/assets/${r.name}.jpg`}
                     alt={r.name}
                     className="restaurant-list-image"
                   />
@@ -144,26 +167,31 @@ const Browse = ({ onTakeQuiz }) => {
                   onClick={() => {
                     setSelectedRestaurant(null);
                     setMenuSearchTerm("");
+                    setMenuItems([]);
                   }}
                 >
                   ← Back to Restaurants
                 </button>
               </div>
 
-              {restaurantMenu.map((item) => {
+              {filteredMenu.map((item) => {
                 const currentQuantity = getItemQuantity(item.id);
                 const cartItem = cartItems.find((ci) => ci.id === item.id) || item;
 
                 return (
                   <div key={item.id} className="menu-list-item">
-                    <img
-                      src={selectedRestaurant.image}
-                      alt={item.name}
-                      className="menu-list-image"
-                    />
+                    <img src={`/assets/${item.name}.jpg`} alt={item.name} className="menu-list-image" />
                     <div className="menu-list-info">
                       <h4 className="menu-list-name">{item.name}</h4>
                       <p className="menu-list-description">{item.description}</p>
+
+                      {/* Food Type */}
+                      {item.food_type && (
+                        <span className={`menu-list-food-type ${item.food_type.replace(" ", "-")}`}>
+                          {item.food_type}
+                        </span>
+                      )}
+
                       <p className="quiz-dish-price">${item.price.toFixed(2)}</p>
 
                       <div className="quiz-cart-buttons">
@@ -178,7 +206,9 @@ const Browse = ({ onTakeQuiz }) => {
                         ) : (
                           <>
                             <button
-                              onClick={() => handleUpdateCart(cartItem, "DECREMENT")}
+                              onClick={() =>
+                                handleUpdateCart(cartItem, "DECREMENT")
+                              }
                             >
                               -
                             </button>

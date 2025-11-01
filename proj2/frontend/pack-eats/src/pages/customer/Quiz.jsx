@@ -1,12 +1,13 @@
-// src/pages/customer/Quiz.jsx
 import React, { useState, useEffect } from "react";
-import { menuItems } from "../../testdata/menuItems.jsx";
-import "../../Styles/global.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Cart from "./Cart";
+import "../../styles/global.css";
 
-function Quiz({ onReturnToBrowse }) {
+function Quiz() {
+  const navigate = useNavigate();
+
   const [tempAnswers, setTempAnswers] = useState({
-    q1: "",
     q2: "",
     q3: "",
     q4: "",
@@ -15,8 +16,9 @@ function Quiz({ onReturnToBrowse }) {
   });
 
   const [submittedTags, setSubmittedTags] = useState([]);
+  const [recommendedItems, setRecommendedItems] = useState([]);
 
-  // ✅ Persistent Cart (same as Browse.jsx)
+  // ✅ Persistent Cart
   const [cartItems, setCartItems] = useState(() => {
     try {
       const saved = localStorage.getItem("packeats_cart");
@@ -35,7 +37,6 @@ function Quiz({ onReturnToBrowse }) {
   }, [cartItems]);
 
   const quizQuestions = [
-    { id: "q1", question: "What type of food do you prefer?", options: ["Vegetarian", "Vegan", "Non-Vegetarian"] },
     { id: "q2", question: "Your mood today?", options: ["Chill", "Adventurous", "Cozy"] },
     { id: "q3", question: "Spice preference?", options: ["Mild", "Kick", "Fiery"] },
     { id: "q4", question: "Meal craving?", options: ["Snack Attack", "Big-Bite"] },
@@ -55,7 +56,8 @@ function Quiz({ onReturnToBrowse }) {
       return;
     }
 
-    let answersList = [];
+    // Build tags from remaining answers (exclude q1)
+    let tags = [];
     Object.entries(tempAnswers).forEach(([qid, val]) => {
       if (qid === "q6") {
         const mapping = {
@@ -64,27 +66,45 @@ function Quiz({ onReturnToBrowse }) {
           "Grilled & Bold": ["Grilled", "HighCal"],
           "Fried & Crispy": ["Fried", "HighCal"]
         };
-        answersList = answersList.concat(mapping[val]);
+        tags = tags.concat(mapping[val]);
       } else {
-        answersList.push(val);
+        tags.push(val);
       }
     });
-    setSubmittedTags(answersList);
+
+    setSubmittedTags(tags);
   };
 
-  const getRecommendedItems = () => {
-    if (submittedTags.length === 0) return [];
-    const basePreference = submittedTags[0];
-    let filtered = menuItems.filter(item => item.recommendation_tags.includes(basePreference));
-    filtered.sort((a, b) => {
-      const aMatches = a.recommendation_tags.filter(tag => submittedTags.includes(tag)).length;
-      const bMatches = b.recommendation_tags.filter(tag => submittedTags.includes(tag)).length;
-      return bMatches - aMatches;
-    });
-    return filtered.slice(0, 5);
-  };
+  useEffect(() => {
+    if (submittedTags.length === 0) return;
 
-  const recommendedItems = getRecommendedItems();
+    const fetchMenuAndFilter = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/restaurants/menu", {
+          params: { restaurantName: "" } // fetch all restaurants
+        });
+        const allMenuItems = response.data;
+
+        // Score items by matching submittedTags
+        const scored = allMenuItems.map(item => {
+          const tags = item.recommendation_tags || [];
+          const matchCount = tags.filter(tag => submittedTags.includes(tag)).length;
+          return { item, matchCount };
+        });
+
+        scored.sort((a, b) => b.matchCount - a.matchCount);
+
+        const top5 = scored.slice(0, 5).map(s => s.item);
+
+        setRecommendedItems(top5);
+      } catch (err) {
+        console.error("Error fetching menu items:", err);
+        setRecommendedItems([]);
+      }
+    };
+
+    fetchMenuAndFilter();
+  }, [submittedTags]);
 
   const getItemQuantity = (itemId) =>
     cartItems.find(ci => ci.id === itemId)?.quantity || 0;
@@ -117,10 +137,9 @@ function Quiz({ onReturnToBrowse }) {
 
   return (
     <div className="quiz-container">
-      {/* Fixed header */}
       <div className="quiz-header" style={{ justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-          <button onClick={onReturnToBrowse} className="back-btn">
+          <button onClick={() => navigate("/browse")} className="back-btn">
             ← Return to Browse
           </button>
           <h2>PACKEats</h2>
@@ -130,9 +149,7 @@ function Quiz({ onReturnToBrowse }) {
         </div>
       </div>
 
-      {/* Two-column layout */}
       <div className="main-content-wrapper">
-        {/* === Left Column: Quiz + Recommendations === */}
         <div className="quiz-form-area">
           <p className="quiz-intro">
             Confused on what dish to order? Answer a few fun questions and we'll
@@ -149,9 +166,7 @@ function Quiz({ onReturnToBrowse }) {
                   {q.options.map(opt => (
                     <label
                       key={opt}
-                      className={`quiz-option-label ${
-                        tempAnswers[q.id] === opt ? "selected-option" : ""
-                      }`}
+                      className={`quiz-option-label ${tempAnswers[q.id] === opt ? "selected-option" : ""}`}
                     >
                       <input
                         type="radio"
@@ -172,64 +187,75 @@ function Quiz({ onReturnToBrowse }) {
             </button>
           </form>
 
-          {submittedTags.length > 0 && (
-            <div className="quiz-recommendations">
+          {recommendedItems.length > 0 && (
+            <div className="quiz-recommendations menu-list">
               <h3 className="quiz-recommendations-title">
                 Top Recommended Dishes:
               </h3>
+
               {recommendedItems.map(item => {
                 const currentQuantity = getItemQuantity(item.id);
                 const cartItem = cartItems.find(ci => ci.id === item.id) || item;
 
                 return (
-                  <div key={item.id} className="quiz-menu-item">
-                    <p className="quiz-restaurant-name">
-                      <strong>Restaurant:</strong> {item.restaurant_name}
-                    </p>
-                    <p className="quiz-dish-name">
-                      <strong>Dish:</strong> {item.name}
-                    </p>
-                    <p className="quiz-dish-description">{item.description}</p>
-                    <p className="quiz-dish-price">
-                      <strong>Price:</strong> ${item.price.toFixed(2)}
-                    </p>
+                  <div key={item.id} className="menu-list-item">
+                    <img
+                      src={`/assets/${item.name}.jpg`}
+                      alt={item.name}
+                      className="menu-list-image"
+                    />
+                    <div className="menu-list-info">
+                      <p className="menu-list-name">{item.name}</p>
+                      <p className="menu-list-description">{item.description}</p>
 
-                    <div className="quiz-cart-buttons">
-                      {currentQuantity === 0 && <span>Add to Cart:</span>}
+                      {/* ✅ Display food_type from backend */}
+                      <p className={`menu-list-food-type ${item.food_type.replace(/\s+/g, "-")}`}>{item.food_type}</p>
 
-                      {currentQuantity === 0 ? (
-                        <button
-                          onClick={() => handleUpdateCart(item, "ADD")}
-                          className="add-plus-btn"
-                        >
-                          +
-                        </button>
-                      ) : (
-                        <>
+                      <p className="quiz-dish-price">${item.price.toFixed(2)}</p>
+
+                      <div className="quiz-cart-buttons">
+                        {currentQuantity === 0 && <span>Add to Cart:</span>}
+                        {currentQuantity === 0 ? (
                           <button
-                            onClick={() =>
-                              handleUpdateCart(cartItem, "DECREMENT")
-                            }
-                          >
-                            -
-                          </button>
-                          <span>{currentQuantity}</span>
-                          <button
-                            onClick={() => handleUpdateCart(cartItem, "ADD")}
+                            onClick={() => handleUpdateCart(item, "ADD")}
+                            className="add-plus-btn"
                           >
                             +
                           </button>
-                        </>
-                      )}
+                        ) : (
+                          <>
+                            <button
+                              onClick={() => handleUpdateCart(cartItem, "DECREMENT")}
+                            >
+                              -
+                            </button>
+                            <span>{currentQuantity}</span>
+                            <button
+                              onClick={() => handleUpdateCart(cartItem, "ADD")}
+                            >
+                              +
+                            </button>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
               })}
+
+              {totalItems > 0 && (
+                <button
+                  onClick={() => navigate("/checkout")}
+                  className="take-quiz-btn"
+                  style={{ marginTop: "15px" }}
+                >
+                  Go to Checkout →
+                </button>
+              )}
             </div>
           )}
         </div>
 
-        {/* === Right Column: Cart Panel === */}
         <div className="side-panel">
           <Cart
             cartItems={cartItems}
