@@ -1,5 +1,6 @@
 package com.project.packEats.controller.restaurant;
 
+import com.project.packEats.entity.restaurant.Restaurant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +52,8 @@ public class RestaurantController {
 
     // ✅ Get all restaurants (new)
     @GetMapping("api/restaurants")
-    public ResponseEntity<List<RestaurantEntity>> getAllRestaurants() {
-        List<RestaurantEntity> restaurants = restaurantRepository.findAll();
+    public ResponseEntity<List<Restaurant>> getAllRestaurants() {
+        List<Restaurant> restaurants = restaurantRepository.findAll();
         logger.info("Returning all restaurants");
         return new ResponseEntity<>(restaurants, HttpStatusCode.valueOf(200));
     }
