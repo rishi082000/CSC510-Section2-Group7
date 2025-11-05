@@ -1,4 +1,4 @@
-package com.project.packEats.controllers;
+package com.project.packEats.controller.restaurant;
 
 import com.project.packEats.entity.order.Order;
 import com.project.packEats.entity.restaurantUser.User;
@@ -45,8 +45,7 @@ public class OrdersController {
             // Only include name and quantity in items
             OrderItemResponse item = new OrderItemResponse(
                     order.getMenuItem().getName(),
-                    order.getQuantity()
-            );
+                    order.getQuantity());
 
             return new OrderResponse(
                     order.getId(),
@@ -54,8 +53,7 @@ public class OrdersController {
                     List.of(item),
                     order.getTimestamp().toString(),
                     order.getStatus(),
-                    order.getRestaurantId()
-            );
+                    order.getRestaurantId());
         }).toList();
     }
 
@@ -65,7 +63,8 @@ public class OrdersController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
 
         switch (request.getStatus().toUpperCase()) {
-            case "PLACED", "ACCEPTED", "PREPARING", "READY", "COMPLETED" -> order.setStatus(request.getStatus().toUpperCase());
+            case "PLACED", "ACCEPTED", "PREPARING", "READY", "COMPLETED" ->
+                order.setStatus(request.getStatus().toUpperCase());
             default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid status");
         }
 
@@ -73,8 +72,7 @@ public class OrdersController {
 
         OrderItemResponse item = new OrderItemResponse(
                 updatedOrder.getMenuItem().getName(),
-                updatedOrder.getQuantity()
-        );
+                updatedOrder.getQuantity());
 
         return new OrderResponse(
                 updatedOrder.getId(),
@@ -82,14 +80,19 @@ public class OrdersController {
                 List.of(item),
                 updatedOrder.getTimestamp().toString(),
                 updatedOrder.getStatus(),
-                updatedOrder.getRestaurantId()
-        );
+                updatedOrder.getRestaurantId());
     }
 
     public static class StatusRequest {
         private String status;
-        public String getStatus() { return status; }
-        public void setStatus(String status) { this.status = status; }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
     }
 
     public static class OrderItemResponse {
@@ -101,8 +104,13 @@ public class OrdersController {
             this.quantity = quantity;
         }
 
-        public String getName() { return name; }
-        public int getQuantity() { return quantity; }
+        public String getName() {
+            return name;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
     }
 
     public static class OrderResponse {
@@ -113,7 +121,8 @@ public class OrdersController {
         private String status;
         private UUID restaurantId;
 
-        public OrderResponse(Long id, UUID userId, List<OrderItemResponse> items, String timestamp, String status, UUID restaurantId) {
+        public OrderResponse(Long id, UUID userId, List<OrderItemResponse> items, String timestamp, String status,
+                UUID restaurantId) {
             this.id = id;
             this.userId = userId;
             this.items = items;
@@ -122,11 +131,28 @@ public class OrdersController {
             this.restaurantId = restaurantId;
         }
 
-        public Long getId() { return id; }
-        public UUID getUserId() { return userId; }
-        public List<OrderItemResponse> getItems() { return items; }
-        public String getTimestamp() { return timestamp; }
-        public String getStatus() { return status; }
-        public UUID getRestaurantId() { return restaurantId; }
+        public Long getId() {
+            return id;
+        }
+
+        public UUID getUserId() {
+            return userId;
+        }
+
+        public List<OrderItemResponse> getItems() {
+            return items;
+        }
+
+        public String getTimestamp() {
+            return timestamp;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public UUID getRestaurantId() {
+            return restaurantId;
+        }
     }
 }
