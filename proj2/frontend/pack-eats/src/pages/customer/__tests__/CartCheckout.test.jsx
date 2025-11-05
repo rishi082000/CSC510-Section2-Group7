@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import CartCheckout from "./CartCheckout";
+import CartCheckout from "../CartCheckout";
 
 // Mock useNavigate
 const mockNavigate = jest.fn();

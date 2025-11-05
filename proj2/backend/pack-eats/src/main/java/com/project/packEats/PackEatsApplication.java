@@ -3,6 +3,7 @@ package com.project.packEats;
 import com.project.packEats.services.CustomUserDetailsService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -47,7 +48,7 @@ public class PackEatsApplication {
                 .cors()
                 .and()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/menu/**", "/api/order/**", "/api/orders/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/menu/**", "/api/order/**", "/api/orders/**", "/api/customers/**", "/api/restaurants/**").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();

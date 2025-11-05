@@ -31,7 +31,7 @@ function Register() {
 
         try {
             const response = await axios.post("http://localhost:8080/api/customers/register", formData);
-            setMessage("Registration successful!");
+            setMessage(response.data);
             setFormData({
                 name: "",
                 email: "",
@@ -52,7 +52,7 @@ function Register() {
             <div className="auth-box">
                 <h2 className="auth-header">Create Your Account</h2>
 
-                <form className="auth-form" onSubmit={handleSubmit}>
+                <form className="auth-form" onSubmit={handleSubmit} className="space-y-4">
                     <input
                         type="text"
                         name="name"
