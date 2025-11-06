@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/global.css";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid"; // for generating unique id if needed
 
 const CartCheckout = () => {
   const navigate = useNavigate();
+
+  // Replace this with actual logged-in user ID in a real app
+  const customerId = "20dc2f03-4817-4e15-80eb-ff911a141007";
 
   const [cartItems, setCartItems] = useState(() => {
     try {
@@ -27,59 +31,49 @@ const CartCheckout = () => {
   const deliveryFee = deliveryMethod === "eco" ? 2 : 5;
   const total = subtotal + tax + deliveryFee;
 
-const handlePlaceOrder = async () => {
-  if (cartItems.length === 0) return;
+  const handlePlaceOrder = async () => {
+    if (cartItems.length === 0) return;
 
-  // ✅ Group items by restaurant
-  const groupedByRestaurant = cartItems.reduce((groups, item) => {
-    const key = item.restaurant_id;
-    if (!groups[key]) groups[key] = [];
-    groups[key].push({
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity,
-      menu_item_id: item.id,
-    });
-    return groups;
-  }, {});
+    try {
+      for (const item of cartItems) {
+        const orderPayload = {
+          id: Math.floor(Math.random() * 1000000), // random integer ID
+          customer_id: customerId,
+          restaurant_id: item.restaurant_id,
+          total_amount: item.price * item.quantity,
+          items: [
+            {
+              name: item.name,
+              price: item.price,
+              quantity: item.quantity,
+              menu_item_id: item.id, // inside items array
+            },
+          ],
+          menu_item_id: item.id, // root menu_item_id
+          status: "PLACED",
+        };
 
-  try {
-    for (const [restaurantId, items] of Object.entries(groupedByRestaurant)) {
-      const totalAmount = items.reduce(
-        (acc, it) => acc + it.price * it.quantity,
-        0
-      );
+        console.log("📦 Sending order payload:", orderPayload);
 
-      // ✅ Random integer ID generated on frontend
-      const randomId = Math.floor(Math.random() * 1000000) + 1;
+        await axios.post(
+          "http://localhost:8080/api/orders/place",
+          orderPayload,
+          { headers: { "Content-Type": "application/json" } }
+        );
+      }
 
-      const orderPayload = {
-        id: randomId,
-        customer_id: null,
-        restaurant_id: restaurantId,
-        total_amount: totalAmount,
-        items: items,
-        status: "PLACED",
-      };
-
-      console.log("📦 Sending order payload:", orderPayload);
-
-      const res = await axios.post(
-        "http://localhost:8080/api/orders/place",
-        orderPayload,
-        { headers: { "Content-Type": "application/json" } }
-      );
-
+      setOrderPlaced(true);
+      localStorage.removeItem("packeats_cart");
+      setCartItems([]);
+    } catch (err) {
+      if (err.response) {
+        console.error("Backend error response:", err.response.data);
+      } else {
+        console.error("Error:", err.message);
+      }
+      alert("Failed to place order. Please check console for details.");
     }
-
-    setOrderPlaced(true);
-    localStorage.removeItem("packeats_cart");
-    setCartItems([]);
-  } catch (err) {
-    console.error("⚠️ Error placing order:", err);
-    alert("Failed to place order. Please try again.");
-  }
-};
+  };
 
   return (
     <div style={{ width: "95%", maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
