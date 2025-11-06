@@ -5,6 +5,18 @@ PackEats is a secure and efficient food delivery platform designed for NC State�
 
 ---
 
+# Team Members
+
+| # | Name                               | UnityID  |
+|---:|------------------------------------|----------|
+| 1 | Rishabh Ravi Kumar                  | rishabh  |
+| 2 | Rishi Senthil Kumar                 | rsenthi  |
+| 3 | Jagadeshwar Muthukumaran            | jmuthuk  |
+| 4 | Krisha Sanjaykumar Darji            | kdarji   |
+| 5 | Priyal Brijesh Doctor               | pdoctor  |
+
+---
+
 # What PackEats delivers
 - Fast, dependable deliveries from on‑campus food providers.
 - Personalized meal recommendations via a short quiz that matches dishes to users’ tastes and preferences.
@@ -141,13 +153,13 @@ C. If a Dockerfile or docker-compose.yml exists:
 
 ## DOI badges
 
-CodeChecker:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546110.svg)](https://doi.org/10.5281/zenodo.17546110)
+CodeChecker: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546110.svg)](https://doi.org/10.5281/zenodo.17546110)
 
-CodeFormatter:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546157.svg)](https://doi.org/10.5281/zenodo.17546157)
+CodeFormatter: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546157.svg)](https://doi.org/10.5281/zenodo.17546157)
 
-Coverage:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546170.svg)](https://doi.org/10.5281/zenodo.17546170)
+Coverage: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546170.svg)](https://doi.org/10.5281/zenodo.17546170)
 
-StyleChecker:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546175.svg)](https://doi.org/10.5281/zenodo.17546175)
+StyleChecker: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546175.svg)](https://doi.org/10.5281/zenodo.17546175)
 
-SyntaxChecker:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546181.svg)](https://doi.org/10.5281/zenodo.17546181)
+SyntaxChecker: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546181.svg)](https://doi.org/10.5281/zenodo.17546181)
 
