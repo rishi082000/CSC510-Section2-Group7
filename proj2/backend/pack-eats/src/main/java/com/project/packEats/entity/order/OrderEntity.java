@@ -35,4 +35,7 @@ public class OrderEntity {
     @Column(name = "status")
     String status;
 
+    @Column(name = "menu_item_id")
+    Integer menu_item_id;
+
 }
