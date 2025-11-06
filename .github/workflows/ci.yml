@@ -5,6 +5,7 @@ on:
     branches: [ githubActions, main ]
   pull_request:
     branches: [ githubActions, main ]
+  workflow_dispatch:
 
 jobs:
   AutomatedTestScript:
