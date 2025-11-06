@@ -163,3 +163,85 @@ StyleChecker: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546175.svg)]
 
 SyntaxChecker: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546181.svg)](https://doi.org/10.5281/zenodo.17546181)
 
+---
+
+# PackEats — Configuration files by tool
+
+The PackEats code is organized under:
+  - proj2/frontend/pack-eats
+  - proj2/backend/pack-eats
+
+Run these commands from the repository root to discover the real config files and their exact paths:
+```bash
+# show top-level and proj2 entries
+ls -la
+ls -la proj2
+# show pack-eats folders
+ls -la proj2/frontend/pack-eats || true
+ls -la proj2/backend/pack-eats || true
+
+# find common config files across proj2
+find proj2 -maxdepth 4 -type f \( -name 'package.json' -o -name 'package-lock.json' -o -name 'yarn.lock' -o -name 'pom.xml' -o -name 'build.gradle' -o -name 'gradlew' -o -name 'mvnw' -o -name 'Dockerfile' -o -name 'docker-compose.yml' -o -name '.env' -o -name '.env.example' -o -name '*.yml' -o -name '.eslintrc*' -o -name '.prettierrc*' -o -name 'tsconfig.json' -o -name 'jest.config.js' \) -print
+```
+
+Node.js / JavaScript (frontend or Node backend)
+- package.json — project scripts and dependencies  
+  Typical locations:
+  - proj2/frontend/pack-eats/package.json
+  - proj2/backend/pack-eats/package.json (if backend uses Node)
+- package-lock.json or yarn.lock — exact dependency versions
+- .env or .env.example — environment variables for local dev
+- .npmrc, .nvmrc — Node/npm configuration and Node version
+- tsconfig.json — TypeScript settings (if used)
+- jest.config.js, vitest config — test runner config
+- .eslintrc.*, .prettierrc.*, .editorconfig — linters and formatters
+
+Java (Maven / Gradle backend)
+- pom.xml — Maven project definition (common for Spring Boot)
+- mvnw, .mvn/ — Maven wrapper and config
+- build.gradle, settings.gradle, gradlew — Gradle build and wrapper files
+- application.properties or application.yml — Spring Boot configuration (often under src/main/resources)
+- gradle.properties — Gradle properties file
+
+Docker & containerization
+- Dockerfile — image build instructions
+  Possible locations:
+  - proj2/frontend/pack-eats/Dockerfile
+  - proj2/backend/pack-eats/Dockerfile
+  - root Dockerfile
+- docker-compose.yml — multi-service local setup (root or proj2 folder)
+
+CI / GitHub Actions
+- .github/workflows/*.yml — CI workflows (e.g., build, test, lint, publish)
+  Check:
+  - .github/workflows/
+
+Static site / web server configs
+- netlify.toml, vercel.json — hosting platform settings (if used)
+- nginx.conf — reverse-proxy or static-server configuration
+
+Linters, formatters, editor
+- .eslintrc.js / .eslintrc.json
+- .prettierrc / .prettierrc.json
+- .editorconfig
+- .vscode/* — recommended VS Code settings and launch configurations
+
+Other useful files
+- README.md or docs/ — per-module instructions
+- .gitignore — ignored files and folders
+- LICENSE — project license (if present)
+
+Example quick mapping (replace with real paths after running the find command)
+- Frontend
+  - proj2/frontend/pack-eats/package.json
+  - proj2/frontend/pack-eats/.env.example
+  - proj2/frontend/pack-eats/Dockerfile
+- Backend (Java)
+  - proj2/backend/pack-eats/pom.xml
+  - proj2/backend/pack-eats/mvnw
+  - proj2/backend/pack-eats/src/main/resources/application.yml
+- Backend (Node)
+  - proj2/backend/pack-eats/package.json
+  - proj2/backend/pack-eats/.env.example
+  - proj2/backend/pack-eats/Dockerfile
+
