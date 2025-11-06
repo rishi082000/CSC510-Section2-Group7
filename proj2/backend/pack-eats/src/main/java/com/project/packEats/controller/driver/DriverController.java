@@ -42,13 +42,13 @@ public class DriverController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // ✅ Test endpoint
+    //  Test endpoint
     @GetMapping("api/drivers/test")
     public String testDriverEndpoint() {
         return "Driver endpoint accessible!";
     }
 
-    // ✅ Register a new driver
+    //  Register a new driver
   @PostMapping("/register")
 public ResponseEntity<?> registerDriver(@RequestBody DriverRegistrationRequest request) {
     try {
