@@ -140,6 +140,7 @@ C. If a Dockerfile or docker-compose.yml exists:
 ---
 
 ## DOI badges
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546110.svg)](https://doi.org/10.5281/zenodo.17546110)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546157.svg)](https://doi.org/10.5281/zenodo.17546157)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546170.svg)](https://doi.org/10.5281/zenodo.17546170)
