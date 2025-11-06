@@ -1,7 +1,6 @@
 
 # PackEats
 
-Project Introduction
 PackEats is a secure and efficient food delivery platform designed for NC State’s campus community. It connects students and local residents to on-campus restaurants, ensuring quick, reliable, and affordable service. A personalized quiz helps users discover dishes that match their tastes and personalities. The platform also supports eco-drivers—students delivering via bikes or public transport—to promote sustainability and inclusivity. By blending personalization, green delivery, and optimized logistics, PackEats streamlines campus dining while providing job opportunities for students.
 
 ---
