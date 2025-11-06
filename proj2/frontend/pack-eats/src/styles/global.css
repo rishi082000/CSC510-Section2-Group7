@@ -1,0 +1,880 @@
+/* Food Delivery App - Dark Theme */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #242424;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-muted: #737373;
+    --accent: #ff6b35;
+    --accent-hover: #ff8555;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --border: #333333;
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Cards */
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+/* Inputs */
+input, textarea, select {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Links */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-muted {
+    color: var(--text-secondary);
+}
+
+.text-small {
+    font-size: 0.875rem;
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--border);
+    margin: 1.5rem 0;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.auth-form-button {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.auth-message {
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.auth-message.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--error);
+    color: var(--error);
+}
+
+.auth-message.success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+:root {
+    --deep-red: #b22222;
+    --dark-red: #8b1a1a;
+    --light-red: #fcebeb;
+    --text-dark: #333;
+    --bg-white: #fff;
+}
+
+/* -------------------------- */
+/* GENERAL STYLES             */
+/* -------------------------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--light-red);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+button,
+.add-plus-btn,
+.quiz-submit-btn,
+.checkout-button,
+.back-btn,
+.take-quiz-btn {
+    padding: 6px 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: var(--deep-red);
+    color: #fff;
+    transition: 0.2s;
+}
+
+button:hover,
+.add-plus-btn:hover,
+.quiz-submit-btn:hover,
+.checkout-button:hover,
+.back-btn:hover,
+.take-quiz-btn:hover {
+    background: var(--dark-red);
+    transform: translateY(-1px);
+}
+
+/* Containers */
+.quiz-container,
+.browse-container {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.main-content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.quiz-form-area {
+    flex: 1;
+    min-width: 0;
+}
+
+.side-panel {
+    flex: 0 0 300px;
+    position: sticky;
+    top: 90px;
+}
+
+/* Header */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--deep-red);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* -------------------------- */
+/* QUIZ STYLES                */
+/* -------------------------- */
+.quiz-intro {
+    margin-bottom: 20px;
+}
+
+.quiz-submit-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px 0;
+    border-radius: 8px;
+}
+
+/* Quiz Question Cards */
+.quiz-question {
+    background: var(--bg-white);
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--deep-red);
+}
+
+.quiz-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.quiz-option-input {
+    display: none;
+}
+
+.quiz-option-label {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid var(--deep-red);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    background: #fff;
+    color: var(--text-dark);
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.quiz-option-label.selected-option {
+    background: var(--deep-red);
+    color: #fff;
+    border-color: var(--dark-red);
+    transform: scale(1.05);
+}
+
+.quiz-option-label:hover {
+    background: #f7dcdc;
+}
+
+/* Quiz Recommendations */
+.quiz-recommendations {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quiz-recommendation-card {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    gap: 15px;
+}
+
+.quiz-recommendation-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quiz-recommendation-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.quiz-recommendation-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.quiz-dish-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--deep-red);
+    margin: 0;
+}
+
+.quiz-restaurant-name {
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.quiz-dish-description {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.quiz-dish-price {
+    font-weight: 700;
+    color: var(--deep-red);
+    margin-top: 6px;
+}
+
+.quiz-recommendation-card button {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 6px 12px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+}
+
+/* -------------------------- */
+/* BROWSE / MENU STYLES       */
+/* -------------------------- */
+.restaurant-list,
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.restaurant-list-item,
+.menu-list-item {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.restaurant-list-item:hover,
+.menu-list-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.restaurant-list-image,
+.menu-list-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-right: 15px;
+}
+
+.restaurant-list-info,
+.menu-list-info {
+    flex: 1;
+}
+
+.restaurant-list-name,
+.menu-list-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+}
+
+.restaurant-list-address,
+.menu-list-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 5px 0;
+}
+
+.menu-list-info .quiz-dish-price {
+    margin-top: 5px;
+}
+
+/* Back / Navigation Buttons */
+.back-btn {
+    font-size: 0.9rem;
+}
+
+.take-quiz-btn {
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+/* Header Search Box */
+.header-center-content {
+    flex: 1;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.restaurant-header-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.restaurant-title-in-header {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+.menu-search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* -------------------------- */
+/* CART / CHECKOUT STYLES     */
+/* -------------------------- */
+.cart-item,
+.menu-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px dashed #d3d3d3;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.quiz-cart-buttons,
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.quiz-cart-buttons span:first-child:not(:only-child) {
+    margin-right: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.quiz-cart-buttons span:not(:first-child),
+.cart-item-controls span {
+    min-width: 28px;
+    text-align: center;
+    padding: 4px 0;
+    font-weight: 600;
+    background: #f7dcdc;
+    border-top: 2px solid var(--deep-red);
+    border-bottom: 2px solid var(--deep-red);
+}
+
+.quiz-cart-buttons button:first-of-type,
+.cart-item-controls button:first-of-type {
+    border-radius: 5px 0 0 5px;
+}
+
+.quiz-cart-buttons button:last-of-type,
+.cart-item-controls button:last-of-type {
+    border-radius: 0 5px 5px 0;
+}
+
+.add-plus-btn {
+    padding: 4px 12px;
+    border-radius: 5px;
+}
+
+.checkout-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.checkout-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.checkout-section {
+    margin-bottom: 1.5rem;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.checkout-button:hover {
+    background-color: #43a047;
+}
+
+.browse-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.browse-link:hover {
+    text-decoration: underline;
+}
+
+.summary p {
+    margin: 0.25rem 0;
+}
+
+/* -------------------------- */
+/* Checkout Options Styling    */
+/* -------------------------- */
+
+.delivery-options,
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.delivery-option,
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+/* Hover effect */
+.delivery-option:hover,
+.payment-option:hover {
+    background-color: #f7dcdc;
+}
+
+/* Checked / Selected state */
+.delivery-option input:checked + span,
+.payment-option input:checked + span {
+    color: #fff;
+    background-color: var(--deep-red);
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+/* Hide default radio buttons */
+.delivery-option input,
+.payment-option input {
+    display: none;
+}
+
+/* Optional: Eco delivery green */
+.delivery-option.eco input:checked + span {
+    background-color: #4caf50;
+}
+
+.menu-list-food-type {
+    font-weight: bold;
+    margin: 5px 0;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.menu-list-food-type.Vegetarian {
+    color: green;
+}
+
+.menu-list-food-type.Non-Vegetarian {
+    color: red;
+}
+
+.menu-list-food-type.Vegan {
+    color: orange;
+}
+
+.home-container {
+    position: relative;
+    padding: 20px;
+}
+
+.register-link {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #1976d2;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.register-link:hover,
+.register-link:focus {
+    background: #155fa0;
+    outline: none;
+}
+
+.register-link svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    color: inherit;
+}
+
+/* 🔹 Navbar Container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 0.75rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 Left and Right sections */
+.navbar-left {
+    flex: 1;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* 🔹 User Info */
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* 🔹 Login/Register Icon */
+.auth-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    gap: 8px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #00bcd4;
+}
+
+.auth-icon {
+    font-size: 1.4rem;
+}
+
+/* 🔹 Logout button */
+.logout-btn {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #0097a7;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    background: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    min-width: 180px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: #f2f2f2;
+}

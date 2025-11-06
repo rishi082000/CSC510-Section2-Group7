@@ -1,0 +1,169 @@
+.orders-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F5F5F5; /* Neutral Light */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.orders-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #212121; /* Neutral Dark */
+}
+
+.orders-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-item {
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.order-item:hover {
+    background-color: #F5F5F5; /* Neutral Light */
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: #212121; /* Neutral Dark */
+}
+
+.order-total {
+    font-weight: bold;
+    color: #FF6B35; /* Primary */
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.order-status select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #212121; /* Neutral Dark */
+}
+
+.order-status select:focus {
+    outline: none;
+    border-color: #66BB6A; /* Secondary */
+}
+
+/* Container styling */
+.orders-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+.orders-container h2 {
+  text-align: center;
+  color: #D32F2F; /* Bold red */
+  margin-bottom: 20px;
+}
+
+/* Error messages */
+.error {
+  background-color: #FFCDD2;
+  color: #B71C1C;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Navigation button */
+.orders-container > div button {
+  transition: 0.3s ease;
+}
+
+.orders-container > div button:hover {
+  background-color: #B71C1C;
+}
+
+/* Orders list */
+.orders-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Individual order item */
+.order-item {
+  background-color: #fff;
+  border: 1px solid #D32F2F;
+  border-left: 6px solid #D32F2F;
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.order-item:hover {
+  background-color: #FFEBEE;
+  transform: scale(1.01);
+}
+
+/* Order items */
+.order-items div {
+  font-size: 15px;
+  color: #333;
+}
+
+/* Order status dropdown */
+.order-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+.order-status select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #B71C1C;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.order-status select:hover {
+  background-color: #FFEBEE;
+}

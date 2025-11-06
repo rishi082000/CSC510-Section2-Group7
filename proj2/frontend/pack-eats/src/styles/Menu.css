@@ -1,0 +1,199 @@
+.menu-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #F5F5F5; /* Neutral Light */
+  border-radius: 8px;
+}
+
+.menu-form input,
+.menu-form label {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  color: #212121; /* Neutral Dark */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.menu-form button {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  background-color: #FF6B35; /* Primary */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu-form button:hover {
+  background-color: #e65a2b; /* Darker Primary on hover */
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF; /* White cards */
+  border-radius: 5px;
+  color: #212121; /* Neutral Dark */
+}
+
+.menu-list button {
+  margin-left: 5px;
+  padding: 5px 8px;
+  background-color: #66BB6A; /* Secondary */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.menu-list button:hover {
+  background-color: #57a05a; /* Slightly darker Secondary */
+}
+
+/* Container styling */
+.menu-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+.menu-container h2 {
+  text-align: center;
+  color: #D32F2F; /* Bold red */
+  margin-bottom: 20px;
+}
+
+/* Error messages */
+.error {
+  background-color: #FFCDD2;
+  color: #B71C1C;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Form styling */
+.menu-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.menu-form input[type="text"],
+.menu-form input[type="email"],
+.menu-form input[type="password"],
+.menu-form input[type="number"] {
+  padding: 10px;
+  border: 1px solid #B71C1C;
+  border-radius: 5px;
+  flex: 1 1 200px;
+}
+
+.menu-form label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+.menu-form button {
+  background-color: #D32F2F;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-form button:hover {
+  background-color: #B71C1C;
+}
+
+/* Table styling */
+.menu-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-table th,
+.menu-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-table thead {
+  background-color: #D32F2F;
+  color: #fff;
+}
+
+.menu-table tbody tr {
+  background-color: #fff;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.menu-table tbody tr:hover {
+  background-color: #FFEBEE;
+  transform: scale(1.01);
+}
+
+.menu-table tbody td button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.menu-table tbody td button:first-child {
+  background-color: #B71C1C;
+  color: #fff;
+}
+
+.menu-table tbody td button:first-child:hover {
+  background-color: #D32F2F;
+}
+
+.menu-table tbody td button:last-child {
+  background-color: #FFC107; /* pinch of contrast */
+  color: #000;
+}
+
+.menu-table tbody td button:last-child:hover {
+  background-color: #FFA000;
+}
+
+/* Navigation button */
+.menu-container > div button {
+  transition: 0.3s ease;
+}
+
+.menu-container > div button:hover {
+  background-color: #B71C1C;
+}
