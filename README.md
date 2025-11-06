@@ -141,14 +141,13 @@ C. If a Dockerfile or docker-compose.yml exists:
 
 ## DOI badges
 
-CodeChecker
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546110.svg)](https://doi.org/10.5281/zenodo.17546110)
-CodeFormatter
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546157.svg)](https://doi.org/10.5281/zenodo.17546157)
+CodeChecker:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546110.svg)](https://doi.org/10.5281/zenodo.17546110)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546170.svg)](https://doi.org/10.5281/zenodo.17546170)
+CodeFormatter:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546157.svg)](https://doi.org/10.5281/zenodo.17546157)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546175.svg)](https://doi.org/10.5281/zenodo.17546175)
+Coverage:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546170.svg)](https://doi.org/10.5281/zenodo.17546170)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546181.svg)](https://doi.org/10.5281/zenodo.17546181)
+StyleChecker:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546175.svg)](https://doi.org/10.5281/zenodo.17546175)
+
+SyntaxChecker:[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17546181.svg)](https://doi.org/10.5281/zenodo.17546181)
 
