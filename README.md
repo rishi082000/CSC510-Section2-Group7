@@ -1,4 +1,4 @@
-```markdown
+
 # PackEats
 
 Project Introduction
@@ -6,7 +6,7 @@ PackEats is a secure and efficient food delivery platform designed for NC State�
 
 ---
 
-What PackEats delivers
+# What PackEats delivers
 - Fast, dependable deliveries from on‑campus food providers.
 - Personalized meal recommendations via a short quiz that matches dishes to users’ tastes and preferences.
 - Sustainable delivery choices through “eco-driver” options: students who use bicycles or public transit can deliver for lower fees with slightly longer delivery windows.
@@ -14,7 +14,7 @@ What PackEats delivers
 
 ---
 
-Core features (user-facing)
+# Core features (user-facing)
 - Personalized quiz and recommendations to help users decide what to order.
 - Menu browsing, favorites, and simple order placement.
 - Delivery selection including standard drivers and eco-drivers.
@@ -22,7 +22,7 @@ Core features (user-facing)
 
 ---
 
-How the project is organized (where to find the code)
+## How the project is organized (where to find the code)
 - proj2/frontend — The user interface and client-side logic: pages for browsing menus, taking the personalization quiz, placing orders, and tracking status.
 - proj2/backend — Server-side services and APIs: user and vendor management, order processing, driver assignment and tracking, and admin endpoints.
 - Look inside each folder for build files (package.json, pom.xml/gradle files) and README or .env.example files that describe exact run steps.
