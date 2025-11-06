@@ -46,6 +46,8 @@ jacoco.exec
 
 # IDEs and editors
 /proj2/.idea/
+/proj2/frontend/pack-eats/coverage/
+/proj2/frontend/pack-eats/coverage/**
 .idea/
 /*.iml
 .vscode/
