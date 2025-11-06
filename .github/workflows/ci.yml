@@ -1,53 +1,54 @@
-name: Full Stack CI (React + Java)
+name: CI - Frontend and Backend Tests
 
 on:
   push:
-    branches: ["githubActions"]
+    branches: [ githubActions ]
   pull_request:
-    branches: ["githubActions"]
-  workflow_dispatch: # Allow manual runs from GitHub UI
+    branches: [ githubActions ]
 
 jobs:
-  # 🧪 FRONTEND TESTS
-  frontend-tests:
-    name: Run Frontend Tests
+  build-and-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./proj2/frontend/pack-eats
+
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run React tests
-        run: npm test -- --watchAll=false
-
-  # ⚙️ BACKEND TESTS
-  backend-tests:
-    name: Run Backend Tests
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./proj2/backend/pack-eats
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up JDK
+        
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
-          java-version: "17"
+          distribution: 'temurin'  # you can also use 'zulu'
+          java-version: '21'
 
-      - name: Build and test backend (Maven)
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build and Test Backend
+        working-directory: proj2/backend/pack-eats
         run: mvn clean test
-        # 👇 If you use Gradle instead, replace with:
-        # run: ./gradlew test
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: proj2/frontend/pack-eats/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: proj2/frontend/pack-eats
+        run: |
+          npm install
+
+      # fix permission issues for react-scripts
+      - name: Ensure react-scripts is executable
+        working-directory: proj2/frontend/pack-eats
+        run: chmod +x node_modules/.bin/react-scripts
+
+      - name: Run Frontend Tests
+        working-directory: proj2/frontend/pack-eats
+        run: npm test -- --watchAll=false
