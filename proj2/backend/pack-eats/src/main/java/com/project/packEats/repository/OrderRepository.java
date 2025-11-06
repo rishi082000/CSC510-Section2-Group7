@@ -14,6 +14,6 @@ import java.util.UUID;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("SELECT o FROM Order o WHERE o.restaurantId = :restaurantId AND o.status IN :statuses ORDER BY o.timestamp DESC")
-    List<Order> findByRestaurantAndStatuses(@Param("restaurantId") UUID restaurantId, @Param("statuses") List<String> statuses);
+    List<Order> findByRestaurantAndStatuses(@Param("restaurantId") UUID restaurantId,
+            @Param("statuses") List<String> statuses);
 }
-

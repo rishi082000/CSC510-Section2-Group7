@@ -4,7 +4,6 @@ import com.project.packEats.entity.menu.MenuItem;
 import com.project.packEats.entity.restaurantUser.User;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
 import java.util.UUID;
 
 @Entity
@@ -28,12 +27,11 @@ public class Order {
     @Column(name = "restaurant_id", nullable = false)
     private UUID restaurantId;
 
-
-
     @Column(nullable = false)
     private String status; // "PLACED", "ACCEPTED", "PREPARING", "READY", "COMPLETED"
 
-    public Order() {}
+    public Order() {
+    }
 
     public Order(User user, MenuItem menuItem, int quantity, LocalDateTime timestamp, String status) {
         this.user = user;
@@ -43,27 +41,61 @@ public class Order {
         this.status = status;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public MenuItem getMenuItem() { return menuItem; }
-    public void setMenuItem(MenuItem menuItem) { this.menuItem = menuItem; }
+    public User getUser() {
+        return user;
+    }
 
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-    public LocalDateTime getTimestamp() { return timestamp; }
-    public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
+    public MenuItem getMenuItem() {
+        return menuItem;
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
+    }
 
-    public UUID getRestaurantId() { return restaurantId; }
-    public void setRestaurantId(UUID restaurantId) { this.restaurantId = restaurantId; }
+    public int getQuantity() {
+        return quantity;
+    }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public UUID getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(UUID restaurantId) {
+        this.restaurantId = restaurantId;
+    }
 
     // Helper method to check if order is visible to restaurant
     public boolean isVisible() {

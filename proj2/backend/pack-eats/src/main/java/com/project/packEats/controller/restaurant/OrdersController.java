@@ -24,8 +24,10 @@ public class OrdersController {
         this.userRepository = userRepository;
     }
 
+    // ✅ Get all orders for restaurant linked to this staff user
     @GetMapping
     public List<OrderResponse> getOrders(@RequestParam UUID userId) {
+        // find the staff user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
@@ -35,21 +37,21 @@ public class OrdersController {
 
         UUID restaurantId = user.getRestaurantId();
         if (restaurantId == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No restaurant assigned to staff");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No restaurant assigned to this staff");
         }
 
+        // fetch only visible orders for that restaurant
         List<String> visibleStatuses = List.of("PLACED", "ACCEPTED", "PREPARING");
         List<Order> orders = orderRepository.findByRestaurantAndStatuses(restaurantId, visibleStatuses);
 
+        // build the response — no userId taken from order
         return orders.stream().map(order -> {
-            // Only include name and quantity in items
             OrderItemResponse item = new OrderItemResponse(
                     order.getMenuItem().getName(),
                     order.getQuantity());
 
             return new OrderResponse(
                     order.getId(),
-                    order.getUser().getId(),
                     List.of(item),
                     order.getTimestamp().toString(),
                     order.getStatus(),
@@ -57,6 +59,7 @@ public class OrdersController {
         }).toList();
     }
 
+    // ✅ Update order status
     @PutMapping("/{id}/status")
     public OrderResponse updateOrderStatus(@PathVariable Long id, @RequestBody StatusRequest request) {
         Order order = orderRepository.findById(id)
@@ -76,13 +79,13 @@ public class OrdersController {
 
         return new OrderResponse(
                 updatedOrder.getId(),
-                updatedOrder.getUser().getId(),
                 List.of(item),
                 updatedOrder.getTimestamp().toString(),
                 updatedOrder.getStatus(),
                 updatedOrder.getRestaurantId());
     }
 
+    // Request classes
     public static class StatusRequest {
         private String status;
 
@@ -95,6 +98,7 @@ public class OrdersController {
         }
     }
 
+    // Response classes
     public static class OrderItemResponse {
         private String name;
         private int quantity;
@@ -115,16 +119,14 @@ public class OrdersController {
 
     public static class OrderResponse {
         private Long id;
-        private UUID userId;
         private List<OrderItemResponse> items;
         private String timestamp;
         private String status;
         private UUID restaurantId;
 
-        public OrderResponse(Long id, UUID userId, List<OrderItemResponse> items, String timestamp, String status,
-                UUID restaurantId) {
+        public OrderResponse(Long id, List<OrderItemResponse> items, String timestamp,
+                String status, UUID restaurantId) {
             this.id = id;
-            this.userId = userId;
             this.items = items;
             this.timestamp = timestamp;
             this.status = status;
@@ -133,10 +135,6 @@ public class OrdersController {
 
         public Long getId() {
             return id;
-        }
-
-        public UUID getUserId() {
-            return userId;
         }
 
         public List<OrderItemResponse> getItems() {
