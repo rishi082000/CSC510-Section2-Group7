@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.17.0" timestamp="2025-11-06T14:57:23.400">
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\PackEatsApplication.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="90" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats" class="PackEatsApplication" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\controller\restaurant\AuthController.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="61" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.controller.restaurant" class="AuthController" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.project.packEats.payload.restaurant.LoginRequest'
+</violation>
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="64" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.controller.restaurant" class="AuthController" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.project.packEats.payload.restaurant.RegisterRequest'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\controller\restaurant\MenuController.java">
+<violation beginline="48" endline="48" begincolumn="20" endcolumn="30" rule="UnusedLocalVariable" ruleset="Best Practices" package="com.project.packEats.controller.restaurant" class="MenuController" method="getMenu" variable="restaurant" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'restaurant'.
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\controller\restaurant\RestaurantController.java">
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="64" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.controller.restaurant" class="RestaurantController" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.project.packEats.entity.restaurant.RestaurantEntity'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\entity\menu\MenuEntity.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="52" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.entity.menu" class="MenuEntity" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'jakarta.annotation.sql.DataSourceDefinition'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\entity\order\OrderEntity.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="52" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.entity.order" class="OrderEntity" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'jakarta.annotation.sql.DataSourceDefinition'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="43" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.entity.order" class="OrderEntity" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.hibernate.annotations.JdbcType'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="69" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.entity.order" class="OrderEntity" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="56" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.entity.order" class="OrderEntity" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.hibernate.type.descriptor.jdbc.JsonJdbcType'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\entity\restaurant\RestaurantEntity.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="52" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.entity.restaurant" class="RestaurantEntity" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'jakarta.annotation.sql.DataSourceDefinition'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="20" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.entity.restaurant" class="RestaurantEntity" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.*'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\repository\MenuRepository.java">
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="27" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.repository" class="MenuRepository" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.Optional'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\repository\OrderCustomerRepository.java">
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="27" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.repository" class="OrderCustomerRepository" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.Optional'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\repository\OrderRepository.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="56" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.repository" class="OrderRepository" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.project.packEats.entity.restaurantUser.User'
+</violation>
+</file>
+<file name="C:\Users\Rishabh_PC\Rishabh\Higher Studies Details\NCSU\Sem1\SE\CSC510-Section2-Group7\proj2\backend\pack-eats\src\main\java\com\project\packEats\repository\RestaurantRepository.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="64" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.repository" class="RestaurantRepository" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.project.packEats.entity.restaurant.RestaurantEntity'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="23" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.repository" class="RestaurantRepository" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.List'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="27" rule="UnnecessaryImport" ruleset="Code Style" package="com.project.packEats.repository" class="RestaurantRepository" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.17.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.Optional'
+</violation>
+</file>
+</pmd>

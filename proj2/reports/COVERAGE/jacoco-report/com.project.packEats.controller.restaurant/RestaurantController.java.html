@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RestaurantController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">packEats</a> &gt; <a href="index.source.html" class="el_package">com.project.packEats.controller.restaurant</a> &gt; <span class="el_source">RestaurantController.java</span></div><h1>RestaurantController.java</h1><pre class="source lang-java linenums">package com.project.packEats.controller.restaurant;
+
+import com.project.packEats.entity.restaurant.Restaurant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.packEats.entity.menu.MenuEntity;
+import com.project.packEats.entity.restaurant.RestaurantEntity;
+import com.project.packEats.repository.MenuRepository;
+import com.project.packEats.repository.RestaurantRepository;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@RestController
+@CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+<span class="fc" id="L24">public class RestaurantController {</span>
+
+<span class="fc" id="L26">    Logger logger = LoggerFactory.getLogger(RestaurantController.class);</span>
+
+    @Autowired
+    private MenuRepository menuRepository;
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    // ✅ Get menu items for a restaurant (existing)
+    @GetMapping(&quot;api/restaurants/menu&quot;)
+    public ResponseEntity&lt;List&lt;MenuEntity&gt;&gt; getMenuItems(@RequestParam String restaurantName) {
+<span class="fc" id="L37">        List&lt;MenuEntity&gt; allMenuItems = menuRepository.findAll();</span>
+
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (restaurantName.isEmpty()) {</span>
+<span class="fc" id="L40">            logger.info(&quot;Returning all the menu items&quot;);</span>
+<span class="fc" id="L41">            return new ResponseEntity&lt;&gt;(allMenuItems, HttpStatusCode.valueOf(200));</span>
+        }
+
+<span class="fc" id="L44">        List&lt;MenuEntity&gt; restaurantMenuItems = allMenuItems.stream()</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">                .filter(item -&gt; item.getRestaurant_name() != null &amp;&amp;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                        item.getRestaurant_name().equalsIgnoreCase(restaurantName))</span>
+<span class="fc" id="L47">                .collect(Collectors.toList());</span>
+
+<span class="fc" id="L49">        logger.info(&quot;Returning menu items for restaurant: {}&quot;, restaurantName);</span>
+<span class="fc" id="L50">        return new ResponseEntity&lt;&gt;(restaurantMenuItems, HttpStatusCode.valueOf(200));</span>
+    }
+
+    // ✅ Get all restaurants (new)
+    @GetMapping(&quot;api/restaurants&quot;)
+    public ResponseEntity&lt;List&lt;Restaurant&gt;&gt; getAllRestaurants() {
+<span class="fc" id="L56">        List&lt;Restaurant&gt; restaurants = restaurantRepository.findAll();</span>
+<span class="fc" id="L57">        logger.info(&quot;Returning all restaurants&quot;);</span>
+<span class="fc" id="L58">        return new ResponseEntity&lt;&gt;(restaurants, HttpStatusCode.valueOf(200));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

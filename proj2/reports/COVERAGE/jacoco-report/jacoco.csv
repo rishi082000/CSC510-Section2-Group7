@@ -1,0 +1,27 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+packEats,com.project.packEats.controller.driver,DriverLoginController,121,7,14,0,26,2,9,2,2,2
+packEats,com.project.packEats.controller.driver,DriverController,173,7,2,0,42,2,4,2,3,2
+packEats,com.project.packEats.entity.restaurant,Restaurant,0,45,0,0,0,13,0,13,0,13
+packEats,com.project.packEats.controller.restaurant,OrdersController.StatusRequest,0,10,0,0,0,4,0,3,0,3
+packEats,com.project.packEats.controller.restaurant,AuthController,0,28,0,0,0,5,0,3,0,3
+packEats,com.project.packEats.controller.restaurant,AuthController.LoginRequest,0,3,0,0,0,1,0,1,0,1
+packEats,com.project.packEats.controller.restaurant,OrdersController.OrderItemResponse,0,15,0,0,0,6,0,3,0,3
+packEats,com.project.packEats.controller.restaurant,OrdersController.OrderResponse,0,33,0,0,0,12,0,6,0,6
+packEats,com.project.packEats.controller.restaurant,RestaurantController,0,73,1,5,0,15,1,6,0,4
+packEats,com.project.packEats.controller.restaurant,AuthController.RegisterRequest,0,3,0,0,0,1,0,1,0,1
+packEats,com.project.packEats.controller.restaurant,MenuController,126,86,6,4,20,23,14,3,9,3
+packEats,com.project.packEats.controller.restaurant,OrderController,0,26,0,0,0,6,0,3,0,3
+packEats,com.project.packEats.controller.restaurant,OrdersController,30,122,3,3,3,36,5,4,2,4
+packEats,com.project.packEats.entity.order,Order,4,85,2,4,2,29,3,17,1,16
+packEats,com.project.packEats.controller.customer,RegistrationController,0,131,1,9,0,30,1,7,0,3
+packEats,com.project.packEats.services,AuthService,0,168,0,10,0,38,0,8,0,3
+packEats,com.project.packEats.services,CustomUserDetailsService,0,29,0,2,0,10,0,3,0,2
+packEats,com.project.packEats.entity.restaurantUser,User,0,60,0,0,0,19,0,14,0,14
+packEats,com.project.packEats.entity.menu,MenuItem,0,91,0,0,0,28,0,25,0,25
+packEats,com.project.packEats,PackEatsApplication.new WebMvcConfigurer() {...},0,36,0,0,0,6,0,2,0,2
+packEats,com.project.packEats,PackEatsApplication,5,87,0,0,2,18,1,7,1,7
+packEats,com.project.packEats.payload.driver,DriverLoginResponse,9,0,0,0,4,0,1,0,1,0
+packEats,com.project.packEats.payload.driver,DriverRegistrationResponse,96,0,0,0,30,0,20,0,20,0
+packEats,com.project.packEats.payload.driver,DriverRegistrationRequest,52,0,0,0,22,0,15,0,15,0
+packEats,com.project.packEats.payload.restaurant,RegisterRequest,0,38,0,0,0,11,0,11,0,11
+packEats,com.project.packEats.payload.restaurant,LoginRequest,0,17,0,0,0,5,0,5,0,5
