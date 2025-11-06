@@ -22,8 +22,8 @@ PackEats is a secure and efficient food delivery platform designed for NC State�
 ---
 
 ## How the project is organized (where to find the code)
-- proj2/frontend — The user interface and client-side logic: pages for browsing menus, taking the personalization quiz, placing orders, and tracking status.
-- proj2/backend — Server-side services and APIs: user and vendor management, order processing, driver assignment and tracking, and admin endpoints.
+- proj2/frontend/pack-eats — The user interface and client-side logic: pages for browsing menus, taking the personalization quiz, placing orders, and tracking status.
+- proj2/backend/pack-eats — Server-side services and APIs: user and vendor management, order processing, driver assignment and tracking, and admin endpoints.
 - Look inside each folder for build files (package.json, pom.xml/gradle files) and README or .env.example files that describe exact run steps.
 
 ---
@@ -41,11 +41,11 @@ Install the tools required for whichever stack you detect:
 ## Running the frontend
 
 A. Static frontend (no package.json)
-1. Open `proj2/frontend/index.html` directly in your browser, OR
+1. Open `proj2/frontend/pack-eats/index.html` directly in your browser, OR
 2. Serve it locally:
    ```bash
    # from repo root
-   cd proj2/frontend
+   cd proj2/frontend/pack-eats
    # Using a simple static server (if installed):
    npx serve .          # or: python3 -m http.server 8080
    ```
@@ -54,13 +54,13 @@ A. Static frontend (no package.json)
 B. Node-based frontend (package.json present)
 1. Install and run:
    ```bash
-   cd proj2/frontend
+   cd proj2/frontend/pack-eats
    npm install
    npm start            # or: npm run dev / npm run serve depending on package.json scripts
    ```
 2. Visit the port printed by the start command (commonly `http://localhost:3000` or `http://localhost:5173`).
 
-If the frontend requires environment variables, create a `.env` in `proj2/frontend` as described in the relevant package.json or README.
+If the frontend requires environment variables, create a `.env` in `proj2/frontend/pack-eats` as described in the relevant package.json or README.
 
 ---
 
@@ -69,14 +69,14 @@ If the frontend requires environment variables, create a `.env` in `proj2/fronte
 A. Java backend (Maven/Gradle)
 1. Maven (pom.xml present):
    ```bash
-   cd proj2/backend
+   cd proj2/backend/pack-eats
    ./mvnw spring-boot:run   # if mvnw is present
    # or
    mvn spring-boot:run
    ```
 2. Gradle (build.gradle):
    ```bash
-   cd proj2/backend
+   cd proj2/backend/pack-eats
    ./gradlew bootRun
    # or
    gradle bootRun
@@ -86,7 +86,7 @@ A. Java backend (Maven/Gradle)
 B. Node.js backend (package.json present)
 1. Install and run:
    ```bash
-   cd proj2/backend
+   cd proj2/backend/pack-eats
    npm install
    npm start               # or the script specified (npm run dev)
    ```
@@ -96,7 +96,7 @@ C. If a Dockerfile or docker-compose.yml exists:
 1. Build and run with Docker:
    ```bash
    # from repo root
-   docker build -t proj2-backend proj2/backend
+   docker build -t proj2-backend proj2/backend/pack-eats
    docker run -p 8080:8080 proj2-backend
    ```
    or use `docker-compose up --build` if a compose file is provided.
@@ -118,7 +118,7 @@ C. If a Dockerfile or docker-compose.yml exists:
 ## Tests
 
 - Node: `npm test` in frontend or backend where relevant.
-- Java: `mvn test` or `./gradlew test` in `proj2/backend`.
+- Java: `mvn test` or `./gradlew test` in `proj2/backend/pack-eats`.
 
 ---
 
