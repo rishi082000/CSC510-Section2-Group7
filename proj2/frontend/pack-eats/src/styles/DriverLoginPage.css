@@ -1,0 +1,59 @@
+.wolfcafe-page {
+  background-color: #ffe5e5; /* soft red background */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.wolfcafe-container {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 400px;
+}
+
+.wolfcafe-title {
+  text-align: center;
+  color: #111;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.accent {
+  color: #b30000; /* deep red accent */
+}
+
+button {
+  background-color: #b30000; /* matches theme */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #990000;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+label {
+  color: #222;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

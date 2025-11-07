@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MenuController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">packEats</a> &gt; <a href="index.source.html" class="el_package">com.project.packEats.controller.restaurant</a> &gt; <span class="el_source">MenuController.java</span></div><h1>MenuController.java</h1><pre class="source lang-java linenums">package com.project.packEats.controller.restaurant;
+
+import com.project.packEats.entity.menu.MenuItem;
+import com.project.packEats.entity.restaurant.Restaurant;
+import com.project.packEats.entity.restaurantUser.User;
+import com.project.packEats.repository.MenuItemRepository;
+import com.project.packEats.repository.RestaurantRepository;
+import com.project.packEats.repository.UserRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping(&quot;/api/menu&quot;)
+@CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+public class MenuController {
+
+    private final MenuItemRepository menuItemRepository;
+    private final UserRepository userRepository;
+    private final RestaurantRepository restaurantRepository;
+
+    public MenuController(MenuItemRepository menuItemRepository,
+                          UserRepository userRepository,
+<span class="fc" id="L27">                          RestaurantRepository restaurantRepository) {</span>
+<span class="fc" id="L28">        this.menuItemRepository = menuItemRepository;</span>
+<span class="fc" id="L29">        this.userRepository = userRepository;</span>
+<span class="fc" id="L30">        this.restaurantRepository = restaurantRepository;</span>
+<span class="fc" id="L31">    }</span>
+
+    // Fetch all menu items linked to staff's restaurant_id
+    @GetMapping
+    public List&lt;MenuItem&gt; getMenu(@RequestParam UUID userId) {
+<span class="fc" id="L36">        User user = userRepository.findById(userId)</span>
+<span class="pc" id="L37">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;User not found&quot;));</span>
+
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (!&quot;restaurant_staff&quot;.equals(user.getRole())) {</span>
+<span class="nc" id="L40">            throw new ResponseStatusException(HttpStatus.FORBIDDEN, &quot;Only restaurant staff can access menu items&quot;);</span>
+        }
+
+<span class="fc" id="L43">        UUID restaurantId = user.getRestaurantId();</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (restaurantId == null) {</span>
+<span class="nc" id="L45">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, &quot;No restaurant assigned to staff&quot;);</span>
+        }
+
+<span class="fc" id="L48">        Restaurant restaurant = restaurantRepository.findById(restaurantId)</span>
+<span class="pc" id="L49">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Restaurant not found&quot;));</span>
+
+<span class="fc" id="L51">        System.out.println(&quot;Menu items: &quot; + menuItemRepository.findByRestaurantId(restaurantId));</span>
+
+<span class="fc" id="L53">        return menuItemRepository.findByRestaurantId(restaurantId);</span>
+    }
+
+    // Add new menu item (attached automatically to staff’s restaurant_id)
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public MenuItem addMenuItem(@RequestParam UUID userId, @RequestBody MenuItem item) {
+<span class="fc" id="L60">        User user = userRepository.findById(userId)</span>
+<span class="pc" id="L61">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;User not found&quot;));</span>
+
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        if (!&quot;restaurant_staff&quot;.equals(user.getRole())) {</span>
+<span class="nc" id="L64">            throw new ResponseStatusException(HttpStatus.FORBIDDEN, &quot;Only restaurant staff can add menu items&quot;);</span>
+        }
+
+<span class="fc" id="L67">        UUID restaurantId = user.getRestaurantId();</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (restaurantId == null) {</span>
+<span class="nc" id="L69">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, &quot;No restaurant assigned to staff&quot;);</span>
+        }
+
+<span class="fc" id="L72">        Restaurant restaurant = restaurantRepository.findById(restaurantId)</span>
+<span class="pc" id="L73">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Restaurant not found&quot;));</span>
+
+<span class="fc" id="L75">        item.setRestaurant(restaurant);</span>
+<span class="fc" id="L76">        return menuItemRepository.save(item);</span>
+    }
+
+    // Get single menu item by ID
+    @GetMapping(&quot;/{id}&quot;)
+    public MenuItem getMenuItemById(@PathVariable Long id) {
+<span class="nc" id="L82">        return menuItemRepository.findById(id)</span>
+<span class="nc" id="L83">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Menu item not found&quot;));</span>
+    }
+
+    // Update menu item
+    @PutMapping(&quot;/{id}&quot;)
+    public MenuItem updateMenuItem(@PathVariable Long id, @RequestBody MenuItem updatedItem) {
+<span class="nc" id="L89">        MenuItem existing = menuItemRepository.findById(id)</span>
+<span class="nc" id="L90">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Menu item not found&quot;));</span>
+
+<span class="nc" id="L92">        existing.setName(updatedItem.getName());</span>
+<span class="nc" id="L93">        existing.setDescription(updatedItem.getDescription());</span>
+<span class="nc" id="L94">        existing.setPrice(updatedItem.getPrice());</span>
+<span class="nc" id="L95">        existing.setCategory(updatedItem.getCategory());</span>
+<span class="nc" id="L96">        existing.setAvailable(updatedItem.isAvailable());</span>
+<span class="nc" id="L97">        existing.setStock(updatedItem.getStock());</span>
+<span class="nc" id="L98">        existing.setRecommendationTags(updatedItem.getRecommendationTags());</span>
+
+<span class="nc" id="L100">        return menuItemRepository.save(existing);</span>
+    }
+
+    // Delete menu item by ID
+    @DeleteMapping(&quot;/{id}&quot;)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMenuItem(@PathVariable Long id) {
+<span class="nc bnc" id="L107" title="All 2 branches missed.">        if (!menuItemRepository.existsById(id)) {</span>
+<span class="nc" id="L108">            throw new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Menu item not found&quot;);</span>
+        }
+<span class="nc" id="L110">        menuItemRepository.deleteById(id);</span>
+<span class="nc" id="L111">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

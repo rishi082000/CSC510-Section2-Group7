@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MenuItem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">packEats</a> &gt; <a href="index.source.html" class="el_package">com.project.packEats.entity.menu</a> &gt; <span class="el_source">MenuItem.java</span></div><h1>MenuItem.java</h1><pre class="source lang-java linenums">package com.project.packEats.entity.menu;
+
+import com.project.packEats.entity.restaurant.Restaurant;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
+@Table(name = &quot;menu_items&quot;)
+<span class="fc" id="L11">public class MenuItem {</span>
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String description;
+    private double price;
+    private String category;
+    private boolean available;
+    private Integer stock;
+
+    @ElementCollection
+    @CollectionTable(
+        name = &quot;menu_item_recommendation_tags&quot;,
+        joinColumns = @JoinColumn(name = &quot;menu_item_id&quot;)
+    )
+    @Column(name = &quot;recommendation_tag&quot;)
+    private List&lt;String&gt; recommendationTags;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;restaurant_id&quot;, nullable = false)
+    @JsonBackReference
+    private Restaurant restaurant;
+
+    @PrePersist
+    protected void onCreate() {
+<span class="fc" id="L42">        createdAt = LocalDateTime.now();</span>
+<span class="fc" id="L43">        updatedAt = LocalDateTime.now();</span>
+<span class="fc" id="L44">    }</span>
+
+    @PreUpdate
+    protected void onUpdate() {
+<span class="fc" id="L48">        updatedAt = LocalDateTime.now();</span>
+<span class="fc" id="L49">    }</span>
+
+    // Getters and Setters
+<span class="fc" id="L52">    public Long getId() { return id; }</span>
+<span class="fc" id="L53">    public void setId(Long id) { this.id = id; }</span>
+
+<span class="fc" id="L55">    public String getName() { return name; }</span>
+<span class="fc" id="L56">    public void setName(String name) { this.name = name; }</span>
+
+<span class="fc" id="L58">    public String getDescription() { return description; }</span>
+<span class="fc" id="L59">    public void setDescription(String description) { this.description = description; }</span>
+
+<span class="fc" id="L61">    public double getPrice() { return price; }</span>
+<span class="fc" id="L62">    public void setPrice(double price) { this.price = price; }</span>
+
+<span class="fc" id="L64">    public String getCategory() { return category; }</span>
+<span class="fc" id="L65">    public void setCategory(String category) { this.category = category; }</span>
+
+<span class="fc" id="L67">    public boolean isAvailable() { return available; }</span>
+<span class="fc" id="L68">    public void setAvailable(boolean available) { this.available = available; }</span>
+
+<span class="fc" id="L70">    public Integer getStock() { return stock; }</span>
+<span class="fc" id="L71">    public void setStock(Integer stock) { this.stock = stock; }</span>
+
+<span class="fc" id="L73">    public List&lt;String&gt; getRecommendationTags() { return recommendationTags; }</span>
+<span class="fc" id="L74">    public void setRecommendationTags(List&lt;String&gt; recommendationTags) { this.recommendationTags = recommendationTags; }</span>
+
+<span class="fc" id="L76">    public LocalDateTime getCreatedAt() { return createdAt; }</span>
+<span class="fc" id="L77">    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }</span>
+
+<span class="fc" id="L79">    public LocalDateTime getUpdatedAt() { return updatedAt; }</span>
+<span class="fc" id="L80">    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }</span>
+
+<span class="fc" id="L82">    public Restaurant getRestaurant() { return restaurant; }</span>
+<span class="fc" id="L83">    public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

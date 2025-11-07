@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    style="text-align: center; margin-top: 100px;"
+  >
+    <h2>
+      Welcome!
+    </h2>
+    <div
+      style="display: flex; justify-content: center; gap: 30px; margin-top: 50px;"
+    >
+      <button
+        style="padding: 20px 40px; background-color: rgb(255, 107, 53); color: rgb(255, 255, 255); border-radius: 8px; cursor: pointer; font-size: 18px;"
+      >
+        Menu Items
+      </button>
+      <button
+        style="padding: 20px 40px; background-color: rgb(102, 187, 106); color: rgb(255, 255, 255); border-radius: 8px; cursor: pointer; font-size: 18px;"
+      >
+        Orders
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

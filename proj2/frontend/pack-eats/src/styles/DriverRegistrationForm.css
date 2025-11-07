@@ -1,0 +1,66 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #1a1a1a; /* darker gray, better visibility */
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+/* Inputs and selects */
+input,
+select {
+  padding: 10px 12px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #111; /* darker text inside fields */
+  background-color: #fdfdfd;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #b11226;
+  background-color: #fff;
+  color: #000; /* ensure focused text is solid black */
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #b11226;
+}
+
+/* Button */
+button {
+  background-color: #b22222 !important; /* deep red */
+  color: #fdfdfd !important; /* slightly off-white text for contrast */
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+button:hover {
+  background-color: #8b1a1a !important; /* darker red on hover */
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
