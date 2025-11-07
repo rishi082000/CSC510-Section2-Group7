@@ -45,7 +45,6 @@ PackEats is a secure and efficient food delivery platform designed for NC State�
 Install the tools required for whichever stack you detect:
 - Node.js (LTS) and npm or yarn — for Node frontends/backends
 - Java 17+ (or project JDK version) and Maven/Gradle — for Java backends
-- Optional: Docker (if containerized)
 - A modern browser for the frontend
 
 ---
@@ -54,14 +53,14 @@ Install the tools required for whichever stack you detect:
 
 A. Static frontend (no package.json)
 1. Open `proj2/frontend/pack-eats/index.html` directly in your browser, OR
-2. Serve it locally:
+2. Start it locally:
    ```bash
    # from repo root
    cd proj2/frontend/pack-eats
    # Using a simple static server (if installed):
-   npx serve .          # or: python3 -m http.server 8080
+   npx start .         
    ```
-3. Visit http://localhost:8080 (or the port used).
+3. Visit http://localhost:3000 (or the port used).
 
 B. Node-based frontend (package.json present)
 1. Install and run:
@@ -70,7 +69,11 @@ B. Node-based frontend (package.json present)
    npm install
    npm start            # or: npm run dev / npm run serve depending on package.json scripts
    ```
-2. Visit the port printed by the start command (commonly `http://localhost:3000` or `http://localhost:5173`).
+2. Make sure to install the version 6 of react-router-dom. This is because we are currently trying to mock react-router-dom for running the jest unit test cases. This can be done by the following:
+   ```
+   npm install react-router-dom@6
+   ``` 
+4. Visit the port printed by the start command (commonly `http://localhost:3000`).
 
 If the frontend requires environment variables, create a `.env` in `proj2/frontend/pack-eats` as described in the relevant package.json or README.
 
@@ -86,14 +89,7 @@ A. Java backend (Maven/Gradle)
    # or
    mvn spring-boot:run
    ```
-2. Gradle (build.gradle):
-   ```bash
-   cd proj2/backend/pack-eats
-   ./gradlew bootRun
-   # or
-   gradle bootRun
-   ```
-3. The app commonly starts on `http://localhost:8080` — check console output for the exact port.
+2. The app commonly starts on `http://localhost:8080` — check console output for the exact port.
 
 B. Node.js backend (package.json present)
 1. Install and run:
@@ -103,17 +99,6 @@ B. Node.js backend (package.json present)
    npm start               # or the script specified (npm run dev)
    ```
 2. Check console for the port (often `http://localhost:3000` or `http://localhost:8080`).
-
-C. If a Dockerfile or docker-compose.yml exists:
-1. Build and run with Docker:
-   ```bash
-   # from repo root
-   docker build -t proj2-backend proj2/backend/pack-eats
-   docker run -p 8080:8080 proj2-backend
-   ```
-   or use `docker-compose up --build` if a compose file is provided.
-
----
 
 ## Connecting frontend and backend
 
@@ -130,7 +115,7 @@ C. If a Dockerfile or docker-compose.yml exists:
 ## Tests
 
 - Node: `npm test` in frontend or backend where relevant.
-- Java: `mvn test` or `./gradlew test` in `proj2/backend/pack-eats`.
+- Java: `mvn test` in `proj2/backend/pack-eats`.
 
 ---
 
@@ -150,6 +135,9 @@ C. If a Dockerfile or docker-compose.yml exists:
 - Environment variables: check README files inside frontend/backend or look for `.env.example`.
 
 ---
+
+## Project2 poster
+Poster link: https://github.com/rishi082000/CSC510-Section2-Group7/blob/main/Section_2_Group_7.pdf
 
 ## Website Demo
 
@@ -205,17 +193,7 @@ Node.js / JavaScript (frontend or Node backend)
 Java (Maven / Gradle backend)
 - pom.xml — Maven project definition (common for Spring Boot)
 - mvnw, .mvn/ — Maven wrapper and config
-- build.gradle, settings.gradle, gradlew — Gradle build and wrapper files
 - application.properties or application.yml — Spring Boot configuration (often under src/main/resources)
-- gradle.properties — Gradle properties file
-
-Docker & containerization
-- Dockerfile — image build instructions
-  Possible locations:
-  - proj2/frontend/pack-eats/Dockerfile
-  - proj2/backend/pack-eats/Dockerfile
-  - root Dockerfile
-- docker-compose.yml — multi-service local setup (root or proj2 folder)
 
 CI / GitHub Actions
 - .github/workflows/*.yml — CI workflows (e.g., build, test, lint, publish)
