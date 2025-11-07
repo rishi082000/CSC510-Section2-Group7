@@ -48,7 +48,7 @@ public class PackEatsApplication {
                 .cors()
                 .and()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/menu/**", "/api/order/**", "/api/orders/**", "/api/customers/**", "/api/restaurants/**","/api/drivers/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/menu/**", "/api/order/**", "/api/orders/**", "/api/customers/**", "/api/restaurants/**","/api/drivers/**", "/api/driver/**").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();

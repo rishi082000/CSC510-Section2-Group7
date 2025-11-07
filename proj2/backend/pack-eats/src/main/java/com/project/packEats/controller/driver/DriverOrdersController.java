@@ -26,7 +26,7 @@ import com.project.packEats.repository.RestaurantRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
-@RequestMapping("/api/driver/orders")
+@RequestMapping("api/driver/orders")
 public class DriverOrdersController {
 
     private static final Logger logger = LoggerFactory.getLogger(DriverOrdersController.class);

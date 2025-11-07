@@ -23,7 +23,7 @@ import com.project.packEats.repository.UserRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
-@RequestMapping("/api/drivers")
+@RequestMapping("api/drivers")
 public class DriverController {
 
     private static final Logger logger = LoggerFactory.getLogger(DriverController.class);
