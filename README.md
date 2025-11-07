@@ -233,12 +233,12 @@ Example quick mapping (replace with real paths after running the find command)
 ---
 ## Discussion Forum and Contact Email
 
-Discord group chat: https://discordapp.com/channels/1407018980891431053/1408899754078900254
-Rishi Senthil Kumar - rsenthi@ncsu.ed
-Rishabh Ravi Kumar - rishabh@ncsu.edu
-Jagadeshwar - jmuthuk@ncsu.edu
-Krisha Sanjaykumar Darji - kdarji@ncsu.edu
-Priyal Brijesh Doctor - pdoctor@ncsu.edu
+- Discord group chat: https://discordapp.com/channels/1407018980891431053/1408899754078900254
+- Rishi Senthil Kumar - rsenthi@ncsu.edu
+- Rishabh Ravi Kumar - rishabh@ncsu.edu
+- Jagadeshwar - jmuthuk@ncsu.edu
+- Krisha Sanjaykumar Darji - kdarji@ncsu.edu
+- Priyal Brijesh Doctor - pdoctor@ncsu.edu
 
 ----
 
