@@ -108,6 +108,7 @@ B. Node.js backend (package.json present)
   export REACT_APP_API_URL=http://localhost:8080
   npm start
   ```
+- The above step is optional and can be skipped because we have hardcoded to post and get from localhost:8080 server.
 - If you encounter CORS errors, enable CORS on the backend or use a proxy in the frontend dev server (check frontend config like `proxy` in package.json or webpack/vite dev settings).
 
 ---
