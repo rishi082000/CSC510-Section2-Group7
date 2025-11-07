@@ -77,7 +77,7 @@ export default function Login() {
                 </form>
 
                 <div className="auth-footer">
-                    Don't have an account? <a href="/proj2/frontend/pack-eats/src/pages/customer/Register">Register</a>
+                    Don't have an account? <a href="/register">Register</a>
                 </div>
 
                 {message && (

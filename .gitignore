@@ -7,7 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 /build/
 /dist/
-/coverage/
+/proj2/frontend/pack-eats/coverage/*
 /.cache/
 /out/
 

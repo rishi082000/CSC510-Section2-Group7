@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate }  from "react-router-dom";
 
 function Register() {
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -39,6 +43,7 @@ function Register() {
                 confirmPassword: "",
                 phone: "",
             });
+            navigate("/login", { replace: true });
         } catch (error) {
             console.error(error);
             setMessage("Registration failed. Please try again.");

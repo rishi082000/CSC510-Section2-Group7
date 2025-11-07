@@ -41,7 +41,7 @@ public class RegistrationController {
 
         logger.info("User information: {}", customer.toString());
 
-        return new ResponseEntity(customer, HttpStatusCode.valueOf(200));
+        return new ResponseEntity("User successfully registered", HttpStatusCode.valueOf(200));
     }
 
     @PostMapping("api/customers/login")
