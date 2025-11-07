@@ -76,8 +76,9 @@ export default function DriverLoginForm() {
     <div className="driver-login-container">
       <form onSubmit={handleSubmit} className="driver-login-form">
         <div className="form-group">
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
+          id="email"
             type="email"
             name="email"
             required
@@ -89,8 +90,9 @@ export default function DriverLoginForm() {
         </div>
 
         <div className="form-group">
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
+          id="password"
             type="password"
             name="password"
             required
