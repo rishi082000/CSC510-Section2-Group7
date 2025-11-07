@@ -1,9 +1,14 @@
 package com.project.packEats.repository;
 
-import com.project.packEats.entity.driver.DriverInfoEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.UUID;
 
-@Repository
-public interface DriverInfoRepository extends JpaRepository<DriverInfoEntity, Integer> {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.project.packEats.entity.driver.DriverEntity;
+import com.project.packEats.entity.driver.DriverInfoEntity;
+
+public interface DriverInfoRepository extends JpaRepository<DriverInfoEntity, UUID> {
+
+    // Add this method to find DriverInfo by DriverEntity
+    DriverInfoEntity findByDriver(DriverEntity driver);
 }
